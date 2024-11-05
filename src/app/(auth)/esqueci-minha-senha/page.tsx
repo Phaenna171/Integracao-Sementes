@@ -3,7 +3,6 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect } from "react";
 import { useFormState } from 'react-dom'
-import { handleAction } from "./action";
 import authService from "../../../services/auth.service";
 
 export default function Page() {
