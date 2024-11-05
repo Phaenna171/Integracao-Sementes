@@ -5,6 +5,16 @@ export default function Textos() {
 
   const { datas, selectedSeed, selectedCategory } = useContext(ProductContext)
 
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    async function getData() {
+      const { data } = await productService.getAll()
+      setProducts(data)
+    }
+    getData()
+  }, [selectedSeed]);
+  
   return (
     <>
       {/* TEXTOS */}
@@ -18,7 +28,7 @@ export default function Textos() {
         ))}
         <h2 className="font-openSans font-bold text-[#354D4D] tracking-[0.05rem] pt-16 pb-4">OBSERVAÇÕES:</h2>
         {datas[selectedCategory].textos[selectedSeed].obs.map((observacao, index) => (
-           <p key={index} className="text-[#354D4D] font-openSans text-lg font-medium pb-2 md:pb-4">{observacao}</p>
+          <p key={index} className="text-[#354D4D] font-openSans text-lg font-medium pb-2 md:pb-4">{observacao}</p>
         ))}
       </div>
 

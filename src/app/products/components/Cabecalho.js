@@ -1,11 +1,23 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { ProductContext } from "@/app/products/context/ProductContext";
 import Slider from "react-slick";
 import Image from "next/image";
+import productService from "@/services/product.service";
 
 export default function Cabecalho() {
 
-  const {datas, goToNext, goToPrev, sliderRef, selectedSeed, selectedCategory} = useContext(ProductContext)
+  const { datas, goToNext, goToPrev, sliderRef, selectedSeed, selectedCategory, setSelectedSeed } = useContext(ProductContext)
+
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    async function getData() {
+      const { data } = await productService.getAll()
+      setProducts(data)
+    }
+    getData()
+  }, [selectedSeed]);
+
 
   const settings = {
     dots: true,
@@ -18,6 +30,10 @@ export default function Cabecalho() {
     arrows: false
   };
 
+  const handleBackArrow = () => {
+    setSelectedSeed(null)
+  }
+
   return (
     <>
       {/* CABEÇALHO E SLIDE */}
@@ -26,14 +42,21 @@ export default function Cabecalho() {
         <div className="absolute inset-0 h-[75%] md:h-[75%] bg-[#F2F2F2] z-0"></div>
 
         <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-y-8 gap-x-8">
+          <Image
+            src="/imgs/arrow-left.svg"
+            width={40}
+            height={50}
+            className="absolute cursor-pointer hover:opacity-50"
+            onClick={() => {handleBackArrow()}}
+          />
 
           {/* TÍTULO, EMBALAGEM E SELOS */}
           <div className="lg:pt-12">
             {/* TITULOS */}
             <div>
-              <h1 className="font-effra text-3xl text-center md:text-start md:text-4xl lg:text-5xl text-[#136736] leading-8">{datas[selectedCategory].cabecalho[selectedSeed].title}</h1>
-              <h2 className="font-openSans text-center md:text-start text-xl md:text-2xl text-[#639D77] font-bold pb-1">{datas[selectedCategory].cabecalho[selectedSeed].subtitle}</h2>
-              <p className="text-center md:text-start font-openSans text-sm text-[#354D4D]">{datas[selectedCategory].cabecalho[selectedSeed].description}</p>
+              <h1 className="font-effra text-3xl text-center md:text-start md:text-4xl lg:text-5xl text-[#136736] leading-8">{products.filter(el => el.category == selectedCategory)[selectedSeed]?.title}</h1>
+              {/* <h2 className="font-openSans text-center md:text-start text-xl md:text-2xl text-[#639D77] font-bold pb-1">{products.filter(el => el.category == selectedCategory)[selectedSeed]?.subtitle}</h2> */}
+              <p className="text-center md:text-start font-openSans text-sm text-[#354D4D]">{products.filter(el => el.category == selectedCategory)[selectedSeed]?.subtitle}</p>
             </div>
 
             {/* EMBALAGEM E SELOS */}
@@ -75,11 +98,12 @@ export default function Cabecalho() {
                 <div key={index} className="relative flex justify-center items-center">
                   <Image
                     src={slide}
-                    alt="Embrapa Logo"
+                    alt="slide"
                     width={300}
                     height={0}
                     objectFit="contain"
                     unoptimized={true}
+                    className="rounded-xl"
                   />
                 </div>
               ))}
