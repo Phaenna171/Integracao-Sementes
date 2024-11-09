@@ -32,23 +32,23 @@ export default function Apresentation() {
     <>
       <div className="relative overflow-hidden">
         <Slider {...settings} ref={sliderRef}>
-          {banners?.map(el => <Link key={el?.id} href={el?.link || ''} className="pb-10 relative h-[83vh]">
+          {banners?.map(el => <Link key={el?.id} href={el?.link || ''} className="pb-10 relative h-[70vh] md:h-[90vh]">
             <Image width={300} height={300} unoptimized alt="" src={el.image} className="absolute -z-10 w-full h-full object-cover" />
-            <div className="grid grid-cols-1 md:grid-cols-3 md:grid-rows-2 gap-4 pt-0 px-10">
-              <div className="flex flex-col items-start justify-start md:col-start-1 md:row-start-2 md:col-span-2">
+            <div className="grid grid-cols-1 grid-rows-3 justify-end md:grid-cols-3 md:grid-rows-2 gap-4 pt-0 px-10 md:px-40">
+              <div className="flex flex-col items-start justify-start row-start-2  md:col-start-1 md:row-start-2 md:col-span-2">
                 <p className="text-white font-openSans text-lg md:text-xl lg:text-2xl tracking-widest font-light">
                   {el.description}
                 </p>
-                <h1 className="text-white font-openSans font-bold max-w-[700px] text-xl md:text-3xl lg:text-5xl py-2 md:py-3 pr-0 md:pr-24 lg:pr-56">
+                <h1 className="text-white font-openSans font-bold max-w-[700px] text-xl md:text-3xl lg:text-5xl py-2 md:py-3 pr-0 md:pr-24 lg:pr-40">
                   {el.title}
                 </h1>
-                <button className="text-white mt-4 bg-[#F07A10] py-2 px-4 md:py-3 md:px-6 rounded-full">
+                <button className="text-white mt-4 bg-[#A5BB3C] py-2 px-4 md:py-3 md:px-6 rounded-full">
                   FAÇA SUA COTAÇÃO
                 </button>
               </div>
 
 
-              <div className="flex flex-col items-center justify-end md:col-start-2 md:row-start-3 pb-7 md:pb-6">
+              <div className="flex flex-col row-start-3 items-center md:justify-end md:col-start-2 md:row-start-3 pb-7 md:pb-6">
                 <img
                   src={"./icons/scrow-down.svg"}
                   className="w-auto h-6 md:h-8 lg:h-10"
