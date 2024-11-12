@@ -90,6 +90,7 @@ export default function AddProductModal({ isOpen, onClose }) {
     formData.append('title', e.currentTarget.title.value);
     formData.append('subtitle', e.currentTarget.subtitle.value);
     formData.append('category', e.currentTarget.category.value);
+    formData.append('line', e.currentTarget.line.value);
     formData.append('description', e.currentTarget.description.value);
     formData.append('tableTitle', e.currentTarget.tableTitle.value);
 
@@ -136,6 +137,21 @@ export default function AddProductModal({ isOpen, onClose }) {
           required type="text" className="w-full mb-4 p-2 border border-green-600 rounded" placeholder="Aqui vai ficar todo o texto auxiliar."
         />
 
+        {/* Linha de produtos */}
+        <label className="block mb-2">Linha:</label>
+        <select
+          name="line"
+          required
+          className="w-full mb-4 p-2 border border-green-600 rounded"
+        >
+          <option value="" disabled selected hidden>
+            Selecione uma linha
+          </option>
+          <option selected value="Linha Quali">Linha Quali</option>
+          <option value="Linha Pro">Linha Pro</option>
+          <option value="Linha Total Quali">Linha Total Quali</option>
+          <option value="Mix">Mix</option>
+        </select>
         {/* Short Description */}
         <label className="block mb-2">Categoria:</label>
         <select
@@ -143,13 +159,15 @@ export default function AddProductModal({ isOpen, onClose }) {
           required
           className="w-full mb-4 p-2 border border-green-600 rounded"
         >
-          <option value="" disabled selected hidden>
-            Selecione uma categoria
-          </option>
+          <option value="" disabled selected hidden>Selecione uma categoria</option>
           <option selected value="Brachiaria">Brachiaria</option>
           <option value="Panicum">Panicum</option>
           <option value="Leguminosas">Leguminosas</option>
-          <option value="Gramas">Gramas</option>
+          <option value="Gramíneas">Gramíneas</option>
+          <option value="Brássicas">Brássicas</option>
+          <option value="Sementes de cobertura">Sementes de cobertura</option>
+          <option value="Poligonáceas">Poligonáceas</option>
+          <option value="Asteráceas">Asteráceas</option>
         </select>
 
         <label className="block mb-2">Carrossel de fotos:</label>

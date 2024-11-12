@@ -4,8 +4,9 @@ import GrupoWhatsApp from '@/app/components/GrupoWhatsApp'
 import Image from 'next/image';
 import Link from 'next/link';
 import Individual from './Individual'
-import { useState, useContext, useRef } from 'react';
+import { useState, useContext, useRef, useEffect } from 'react';
 import { ProductContext } from '../context/ProductContext';
+import productService from '@/services/product.service';
 
 
 export default function Semente() {
@@ -13,21 +14,18 @@ export default function Semente() {
   const { selectedLinha, setSelectedLinha, selectedCategoria, setSelectedCategoria, selectedSemente, setSelectedSemente,
     selectedMix, setSelectedMix, linhas } = useContext(ProductContext)
 
-  const tabela = [
-    "B. brizantha cv. Marandu - PRÓ 60",
-    "B. brizantha cv. Marandu - PRÓ 60",
-    "B. brizantha cv. Marandu - PRÓ 60",
-    "B. brizantha cv. Marandu - PRÓ 60",
-    "B. brizantha cv. Marandu - PRÓ 60",
-    "B. brizantha cv. Marandu - PRÓ 60",
-    "B. brizantha cv. Marandu - PRÓ 60",
-    "B. brizantha cv. Marandu - PRÓ 60",
-    "B. brizantha cv. Marandu - PRÓ 60",
-    "B. brizantha cv. Marandu - PRÓ 60",
+  const [products, setProducts] = useState([]);
 
-  ]
+  useEffect(() => {
+    async function getData() {
+      const { data } = await productService.getAll()
+      setProducts(data)
+    }
+    getData()
+  }, [selectedSemente]);
 
-
+  console.log(selectedLinha,selectedCategoria,selectedSemente, products)
+  
   return (
     <>
       <div className='pb-16'>
@@ -45,7 +43,7 @@ export default function Semente() {
               className="w-8 h-8 md:w-16 md:h-16"
             />
             <Image
-              src={linhas[selectedLinha].url}
+              src={products.filter(el => el.line == selectedLinha && el.category == selectedCategoria)[selectedSemente]?.carouselPhotos[0]}
               width={500}
               height={192}
               className='w-[400px] h-full md:w-[500px]'
@@ -54,23 +52,23 @@ export default function Semente() {
         </div>
         <div className='px-60 pt-28'>
           <div className='pb-16'>
-            <p className="text-center md:text-start font-openSans font-semibold text-xl text-[#354D4D]">Brachiaria</p>
-            <h1 className="font-effra text-3xl text-center md:text-start md:text-4xl lg:text-5xl text-[#136736] leading-8">Marandú</h1>
-            <p className="text-center md:text-start font-openSans text-sm text-[#354D4D]">B. brizantha cv. Marandú</p>
+            <p className="text-center md:text-start font-openSans font-semibold text-xl text-[#354D4D]">{products.filter(el => el.line == selectedLinha && el.category == selectedCategoria)[selectedSemente]?.line}</p>
+            <h1 className="font-effra text-3xl text-center md:text-start md:text-4xl lg:text-5xl text-[#136736] leading-8">{products.filter(el => el.line == selectedLinha && el.category == selectedCategoria)[selectedSemente]?.title}</h1>
+            <p className="text-center md:text-start font-openSans text-sm text-[#354D4D]">{products.filter(el => el.line == selectedLinha && el.category == selectedCategoria)[selectedSemente]?.subtitle}</p>
           </div>
-          <p className="text-[#354D4D] font-openSans text-lg font-medium tracking-wider leading-9 pb-16">As semetes Quali Combinam tecnologia e produtos de qualidade, usando sementes selecionadas de alta pureza (95%) que recebem tratamento com fungicida Pureza N, revestimento com macro e micronutrientes e um de blend de minerais naturais, além do seu acabamento em grafite, garantindo fluidez e melhorando a plantabilidade.</p>
+          <p className="text-[#354D4D] font-openSans text-lg font-medium tracking-wider leading-9 pb-16">{products.filter(el => el.line == selectedLinha && el.category == selectedCategoria)[selectedSemente]?.description}</p>
         </div>
 
         <div className="px-4 md:px-40 lg:px-[500px] pb-16">
-          <p className="bg-[#4C9162] text-white font-effra py-1 pl-8">B. brizantha cv. Marandu - PRÓ 60</p>
+          <p className="bg-[#4C9162] text-white font-effra py-1 pl-8">{products.filter(el => el.line == selectedLinha && el.category == selectedCategoria)[selectedSemente]?.tableTitle}</p>
           <div className="relative max-h-64 overflow-y-auto table-scroll">
-            {tabela.map((info, index) => (
+            {products.filter(el => el.line == selectedLinha && el.category == selectedCategoria)[selectedSemente]?.table.map((info, index) => (
               <div
                 key={index}
                 className={`py-1 px-8 ${index % 2 !== 0 ? 'bg-[#ACD3B8]' : 'bg-[#EAFCF0]'
                   }`}
               >
-                <p className="font-effra text-[#2D2F2E]">{info}</p>
+                <p className="font-effra text-[#2D2F2E]">{info.value}</p>
 
               </div>
             ))}

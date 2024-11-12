@@ -5,25 +5,25 @@ export const ProductContext = createContext();
 export const ProductProvider = ({ children }) => {
 
   const [selectedLinha, setSelectedLinha] = useState('')
-  const [selectedCategoria, setSelectedCategoria] = useState('brachiaria')
+  const [selectedCategoria, setSelectedCategoria] = useState('Brachiaria')
   const [selectedSemente, setSelectedSemente] = useState('')
   const [selectedMix, setSelectedMix] = useState('')
 
 
   const linhas = {
-    quali: {
+    "Linha Quali": {
       nome: 'Linha Quali',
       url: '/imgs/integracao/linhas-quali.png'
     },
-    pro: {
+    'Linha Pro': {
       nome: 'Linha Pro',
       url: '/imgs/integracao/linhas-pro.png'
     },
-    total: {
+    'Linha Total Quali': {
       nome: 'Linha Total Quali',
       url: '/imgs/integracao/linhas-total-quali.png'
     },
-    mix: {
+    'Mix': {
       nome: 'Mix',
       url: '/imgs/integracao/linhas-mix.png'
     },
@@ -33,11 +33,11 @@ export const ProductProvider = ({ children }) => {
 
   return (
     <ProductContext.Provider value={{
-      selectedLinha, 
-      setSelectedLinha, 
-      selectedCategoria, 
-      setSelectedCategoria, 
-      selectedSemente, 
+      selectedLinha,
+      setSelectedLinha,
+      selectedCategoria,
+      setSelectedCategoria,
+      selectedSemente,
       setSelectedSemente,
       selectedMix,
       setSelectedMix,

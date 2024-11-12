@@ -1,107 +1,27 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { useState, useContext, useRef } from 'react';
+import { useState, useContext, useRef, useEffect } from 'react';
 import { ProductContext } from '../context/ProductContext';
+import productService from '@/services/product.service';
 
 
 export default function Individual() {
 
   const { selectedLinha, setSelectedLinha, selectedCategoria, setSelectedCategoria, setSelectedSemente, linhas } = useContext(ProductContext)
 
-  const [selectedProduct, setSelectedProduct] = useState(false)
+  const [products, setProducts] = useState([]);
 
-  const grid = [
-    {
-      url: '/imgs/integracao/brachiaria_humidicola_2_grid.jpg',
-      nome: 'Produto',
-      nomeCientifico: 'Nome Científico'
-    },
-    {
-      url: '/imgs/integracao/brachiaria_humidicola_2_grid.jpg',
-      nome: 'Produto',
-      nomeCientifico: 'Nome Científico'
-    },
-    {
-      url: '/imgs/integracao/brachiaria_humidicola_2_grid.jpg',
-      nome: 'Produto',
-      nomeCientifico: 'Nome Científico'
-    },
-    {
-      url: '/imgs/integracao/brachiaria_humidicola_2_grid.jpg',
-      nome: 'Produto',
-      nomeCientifico: 'Nome Científico'
-    },
-    {
-      url: '/imgs/integracao/brachiaria_humidicola_2_grid.jpg',
-      nome: 'Produto',
-      nomeCientifico: 'Nome Científico'
-    },
-    {
-      url: '/imgs/integracao/brachiaria_humidicola_2_grid.jpg',
-      nome: 'Produto',
-      nomeCientifico: 'Nome Científico'
-    },
-    {
-      url: '/imgs/integracao/brachiaria_humidicola_2_grid.jpg',
-      nome: 'Produto',
-      nomeCientifico: 'Nome Científico'
-    },
-    {
-      url: '/imgs/integracao/brachiaria_humidicola_2_grid.jpg',
-      nome: 'Produto',
-      nomeCientifico: 'Nome Científico'
-    },
-    {
-      url: '/imgs/integracao/brachiaria_humidicola_2_grid.jpg',
-      nome: 'Produto',
-      nomeCientifico: 'Nome Científico'
-    },
-    {
-      url: '/imgs/integracao/brachiaria_humidicola_2_grid.jpg',
-      nome: 'Produto',
-      nomeCientifico: 'Nome Científico'
-    },
-    {
-      url: '/imgs/integracao/brachiaria_humidicola_2_grid.jpg',
-      nome: 'Produto',
-      nomeCientifico: 'Nome Científico'
-    },
-    {
-      url: '/imgs/integracao/brachiaria_humidicola_2_grid.jpg',
-      nome: 'Produto',
-      nomeCientifico: 'Nome Científico'
-    },
-    {
-      url: '/imgs/integracao/brachiaria_humidicola_2_grid.jpg',
-      nome: 'Produto',
-      nomeCientifico: 'Nome Científico'
-    },
-    {
-      url: '/imgs/integracao/brachiaria_humidicola_2_grid.jpg',
-      nome: 'Produto',
-      nomeCientifico: 'Nome Científico'
-    },
-    {
-      url: '/imgs/integracao/brachiaria_humidicola_2_grid.jpg',
-      nome: 'Produto',
-      nomeCientifico: 'Nome Científico'
-    },
-    {
-      url: '/imgs/integracao/brachiaria_humidicola_2_grid.jpg',
-      nome: 'Produto',
-      nomeCientifico: 'Nome Científico'
-    },
-    {
-      url: '/imgs/integracao/brachiaria_humidicola_2_grid.jpg',
-      nome: 'Produto',
-      nomeCientifico: 'Nome Científico'
-    },
-    {
-      url: '/imgs/integracao/brachiaria_humidicola_2_grid.jpg',
-      nome: 'Produto',
-      nomeCientifico: 'Nome Científico'
-    },
-  ]
+  const handleImageClick = (index) => {
+    setSelectedSeed(index);
+  };
+
+  useEffect(() => {
+    async function getData() {
+      const { data } = await productService.getAll()
+      setProducts(data)
+    }
+    getData()
+  }, []);
 
   return (
     <>
@@ -142,48 +62,48 @@ export default function Individual() {
               </Link>
             </div>
             <div className='md:flex justify-between md:border-b-2 border-[#CFD5D0]'>
-              <h1 className={`text-center font-openSans  text-lg md:text-lg cursor-pointer px-2 ${selectedCategoria === 'brachiaria' ? "text-[#2B654C] bg-[#E3EBD6]" : "text-[#C9C9C9]"}`}
-                onClick={() => { setSelectedCategoria('brachiaria') }}
+              <h1 className={`text-center font-openSans  text-lg md:text-lg cursor-pointer px-2 ${selectedCategoria === 'Brachiaria' ? "text-[#2B654C] bg-[#E3EBD6]" : "text-[#C9C9C9]"}`}
+                onClick={() => { setSelectedCategoria('Brachiaria') }}
               >Brachiaria</h1>
-              <h1 className={`text-center font-openSans  text-lg md:text-lg cursor-pointer px-2 ${selectedCategoria === 'panicum' ? "text-[#2B654C] bg-[#E3EBD6]" : "text-[#C9C9C9]"}`}
-                onClick={() => { setSelectedCategoria('panicum') }}
+              <h1 className={`text-center font-openSans  text-lg md:text-lg cursor-pointer px-2 ${selectedCategoria === 'Panicum' ? "text-[#2B654C] bg-[#E3EBD6]" : "text-[#C9C9C9]"}`}
+                onClick={() => { setSelectedCategoria('Panicum') }}
               >Panicum</h1>
-              <h1 className={`text-center font-openSans  text-lg md:text-lg cursor-pointer px-2 ${selectedCategoria === 'leguminosas' ? "text-[#2B654C] bg-[#E3EBD6]" : "text-[#C9C9C9]"}`}
-                onClick={() => { setSelectedCategoria('leguminosas') }}
+              <h1 className={`text-center font-openSans  text-lg md:text-lg cursor-pointer px-2 ${selectedCategoria === 'Leguminosas' ? "text-[#2B654C] bg-[#E3EBD6]" : "text-[#C9C9C9]"}`}
+                onClick={() => { setSelectedCategoria('Leguminosas') }}
               >Leguminosas</h1>
-              <h1 className={`text-center font-openSans  text-lg md:text-lg cursor-pointer px-2 ${selectedCategoria === 'gramineas' ? "text-[#2B654C] bg-[#E3EBD6]" : "text-[#C9C9C9]"}`}
-                onClick={() => { setSelectedCategoria('gramineas') }}
+              <h1 className={`text-center font-openSans  text-lg md:text-lg cursor-pointer px-2 ${selectedCategoria === 'Gramíneas' ? "text-[#2B654C] bg-[#E3EBD6]" : "text-[#C9C9C9]"}`}
+                onClick={() => { setSelectedCategoria('Gramíneas') }}
               >Gramíneas</h1>
-              <h1 className={`text-center font-openSans  text-lg md:text-lg cursor-pointer px-2 ${selectedCategoria === 'brassicas' ? "text-[#2B654C] bg-[#E3EBD6]" : "text-[#C9C9C9]"}`}
-                onClick={() => { setSelectedCategoria('brassicas') }}
+              <h1 className={`text-center font-openSans  text-lg md:text-lg cursor-pointer px-2 ${selectedCategoria === 'Brássicas' ? "text-[#2B654C] bg-[#E3EBD6]" : "text-[#C9C9C9]"}`}
+                onClick={() => { setSelectedCategoria('Brássicas') }}
               >Brássicas</h1>
-              <h1 className={`text-center font-openSans  text-lg md:text-lg cursor-pointer px-2 ${selectedCategoria === 'cobertura' ? "text-[#2B654C] bg-[#E3EBD6]" : "text-[#C9C9C9]"}`}
-                onClick={() => { setSelectedCategoria('cobertura') }}
+              <h1 className={`text-center font-openSans  text-lg md:text-lg cursor-pointer px-2 ${selectedCategoria === 'Sementes de cobertura' ? "text-[#2B654C] bg-[#E3EBD6]" : "text-[#C9C9C9]"}`}
+                onClick={() => { setSelectedCategoria('Sementes de cobertura') }}
               >Sementes de cobertura</h1>
             </div>
           </div>
         </div>
 
         <div className="my-8 md:my-16 px-2 md:px-16 grid grid-cols-3 sm:grid-cols-3 lg:grid-cols-3 overflow-hidden max-h-[40vh] md:max-h-[100vh] overflow-y-auto table-scroll">
-          {grid.map((item, index) => (
+          {products.filter(el => el.line == selectedLinha && el.category == selectedCategoria).map((product, index) => (
             <div
               key={index}
               className="relative w-full h-[120px] sm:h-[200px] md:h-[250px] lg:h-[300px] cursor-pointer"
-              onClick={() => (setSelectedSemente('true'))}
+              onClick={() => (setSelectedSemente(index))}
             >
               <Image
-                src={item.url}
-                alt=""
+                src={product.carouselPhotos[0]}
+                alt={product.title}
                 layout="fill"
                 objectFit="cover"
                 className="grayscale brightness-50 hover:grayscale-0 hover:brightness-100 transition-all duration-300"
                 unoptimized='true'
               />
               <h1 className="text-white absolute font-openSans font-bold text-base sm:text-2xl lg:text-3xl top-4 sm:top-8 left-2 sm:left-4 uppercase">
-                {item.nome}
+                {product.title}
               </h1>
               <p className="text-white absolute font-openSans font-light text-sm sm:text-base sm:font-medium top-10 sm:top-16 left-2 sm:left-4">
-                {item.nomeCientifico}
+                {product.subtitle}
               </p>
             </div>
           ))}

@@ -16,7 +16,7 @@ export default function MenuLinhas() {
         <div className='py-8 md:py-0 grid grid-cols-2 md:grid-cols-4 gap-x-10 gap-y-12'>
           <div
             className='flex flex-col items-center'
-            onClick={() => { setSelectedLinha('quali') }}
+            onClick={() => { setSelectedLinha('Linha Quali') }}
           >
             <Image
               src='/imgs/integracao/linhas-quali.png'
@@ -29,7 +29,7 @@ export default function MenuLinhas() {
           </div>
           <div
             className='flex flex-col items-center'
-            onClick={() => { setSelectedLinha('pro') }}
+            onClick={() => { setSelectedLinha('Linha Pro') }}
           >
             <Image
               src='/imgs/integracao/linhas-pro.png'
@@ -42,7 +42,7 @@ export default function MenuLinhas() {
           </div>
           <div
             className='flex flex-col items-center'
-            onClick={() => { setSelectedLinha('total') }}
+            onClick={() => { setSelectedLinha('Linha Total Quali') }}
           >
             <Image
               src='/imgs/integracao/linhas-total-quali.png'
@@ -55,7 +55,7 @@ export default function MenuLinhas() {
           </div>
           <Link href="/products/mix"
             className='flex flex-col items-center'
-            onClick={() => { setSelectedLinha('mix') }}
+            onClick={() => { setSelectedLinha('Linha Mix') }}
           >
             <Image
               src='/imgs/integracao/linhas-mix.png'
