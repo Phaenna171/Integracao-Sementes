@@ -23,7 +23,7 @@ export default function MenuLinhas() {
               width={250}
               height={192}
             />
-            <p className="text-center font-openSans font-bold text-xl md:text-xl text-[#354D4D] pl-10">
+            <p className="text-center font-openSans font-bold md:text-xl md:text-xl text-[#354D4D] pl-10">
               Linha Quali
             </p>
           </div>
@@ -36,7 +36,7 @@ export default function MenuLinhas() {
               width={250}
               height={192}
             />
-            <p className="text-center font-openSans font-bold text-xl md:text-xl text-[#354D4D] pl-10">
+            <p className="text-center font-openSans font-bold md:text-xl md:text-xl text-[#354D4D] pl-10">
               Linha Pro
             </p>
           </div>
@@ -49,7 +49,7 @@ export default function MenuLinhas() {
               width={250}
               height={192}
             />
-            <p className="text-center font-openSans font-bold text-xl md:text-xl text-[#354D4D] pl-10">
+            <p className="text-center font-openSans font-bold md:text-xl md:text-xl text-[#354D4D] pl-10">
               Linha Total Quali
             </p>
           </div>
@@ -62,7 +62,7 @@ export default function MenuLinhas() {
               width={250}
               height={192}
             />
-            <p className="text-center font-openSans font-bold text-xl md:text-xl text-[#354D4D] pl-10">
+            <p className="text-center font-openSans font-bold md:text-xl md:text-xl text-[#354D4D] pl-10">
               Mix
             </p>
           </Link>

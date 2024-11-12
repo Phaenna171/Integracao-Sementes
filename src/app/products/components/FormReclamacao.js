@@ -3,6 +3,10 @@ import React, { useState, useRef } from 'react';
 import Etapa1 from './Etapa1';
 import Etapa2 from './Etapa2';
 import Etapa3 from './Etapa3';
+import Etapa4 from './Etapa4';
+import Etapa5 from './Etapa5';
+import Etapa6 from './Etapa6';
+import Etapa7 from './Etapa7';
 import Header from '@/app/components/Header';
 import GrupoWhatsApp from '@/app/components/GrupoWhatsApp';
 import Footer from '@/app/components/Footer';
@@ -30,10 +34,30 @@ export default function FormReclamacao() {
         {etapa === 1 && <Etapa1 onChange={handleChange} data={formData} />}
         {etapa === 2 && <Etapa2 onChange={handleChange} data={formData} />}
         {etapa === 3 && <Etapa3 onChange={handleChange} data={formData} />}
-        <div>
-          {etapa > 1 && <button onClick={retrocederEtapa}>Anterior</button>}
-          {etapa < 3 && <button onClick={avancarEtapa}>Próximo</button>}
-          {etapa === 3 && <button onClick={() => console.log(formData)}>Enviar</button>}
+        {etapa === 4 && <Etapa4 onChange={handleChange} data={formData} />}
+        {etapa === 5 && <Etapa5 onChange={handleChange} data={formData} />}
+        {etapa === 6 && <Etapa6 onChange={handleChange} data={formData} />}
+        {etapa === 7 && <Etapa7 onChange={handleChange} data={formData} />}
+        <div className='flex justify-center gap-x-8'>
+
+
+          {etapa > 1 && <button className='font-effra text-xl md:text-xl text-[#2C674B] pt-8 flex gap-x-2 items-center' onClick={retrocederEtapa}>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-chevron-left" viewBox="0 0 16 16">
+              <path fillRule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0" />
+            </svg>
+            Anterior
+          </button>}
+
+
+          {etapa < 7 && <button className='font-effra text-xl md:text-xl text-[#2C674B] pt-8 flex gap-x-2 items-center' onClick={avancarEtapa}>
+            Próximo
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-chevron-right" viewBox="0 0 16 16">
+              <path fillRule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708" />
+            </svg>
+          </button>}
+
+          
+          {etapa === 7 && <button className='font-effra text-xl md:text-xl text-[#2C674B] pt-8 flex gap-x-2 items-center' onClick={() => console.log(formData)}>Enviar</button>}
         </div>
       </div>
       <Footer ref={footerRef} />

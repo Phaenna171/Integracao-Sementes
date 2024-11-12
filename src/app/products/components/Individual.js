@@ -105,17 +105,31 @@ export default function Individual() {
 
   return (
     <>
-      <div className='md:px-32 pt-16'>
+      <div className='md:px-32 pt-8 md:pt-16'>
         <div className='px-8 md:px-0 md:flex items-center gap-x-10'>
+          <Link href="/products" onClick={() => { setSelectedLinha("") }} className='md:hidden'>
+            <div className='flex gap-x-2 items-center'>
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#696D69" class="bi bi-chevron-left" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0" />
+              </svg>
+
+              <p className='text-[#696D69]'>
+                VOLTAR
+              </p>
+            </div>
+          </Link>
+
           <Image
             src={linhas[selectedLinha].url}
+            alt='Pacote'
             width={200}
             height={192}
+            className='pt-8 md:pt-0'
           />
           <div className='w-full flex flex-col gap-y-4'>
-            <div className='flex justify-between'>
-              <h1 className="text-center font-effra text-xl md:text-4xl text-[#2C674B]">{linhas[selectedLinha].nome}</h1>
-              <Link href="/products" onClick={() => { setSelectedLinha("") }}>
+            <div className='relative flex justify-center md:justify-between'>
+              <h1 className="text-center font-effra text-3xl md:text-4xl text-[#2C674B] pb-8 md:pb-0">{linhas[selectedLinha].nome}</h1>
+              <Link href="/products" onClick={() => { setSelectedLinha("") }} className='hidden md:block'>
                 <div className='flex gap-x-2 items-center'>
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#696D69" class="bi bi-chevron-left" viewBox="0 0 16 16">
                     <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0" />
@@ -127,7 +141,7 @@ export default function Individual() {
                 </div>
               </Link>
             </div>
-            <div className='flex justify-between border-b-2 border-[#CFD5D0]'>
+            <div className='md:flex justify-between md:border-b-2 border-[#CFD5D0]'>
               <h1 className={`text-center font-openSans  text-lg md:text-lg cursor-pointer px-2 ${selectedCategoria === 'brachiaria' ? "text-[#2B654C] bg-[#E3EBD6]" : "text-[#C9C9C9]"}`}
                 onClick={() => { setSelectedCategoria('brachiaria') }}
               >Brachiaria</h1>
@@ -150,11 +164,11 @@ export default function Individual() {
           </div>
         </div>
 
-        <div className="my-16 px-16 grid grid-cols-3 sm:grid-cols-3 lg:grid-cols-3 overflow-hidden max-h-[100vh] overflow-y-auto table-scroll">
+        <div className="my-8 md:my-16 px-2 md:px-16 grid grid-cols-3 sm:grid-cols-3 lg:grid-cols-3 overflow-hidden max-h-[40vh] md:max-h-[100vh] overflow-y-auto table-scroll">
           {grid.map((item, index) => (
             <div
               key={index}
-              className="relative w-full h-[150px] sm:h-[200px] md:h-[250px] lg:h-[300px] cursor-pointer"
+              className="relative w-full h-[120px] sm:h-[200px] md:h-[250px] lg:h-[300px] cursor-pointer"
               onClick={() => (setSelectedSemente('true'))}
             >
               <Image

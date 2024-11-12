@@ -31,7 +31,7 @@ export default function Semente() {
   return (
     <>
       <div className='pb-16'>
-        <div className="relative grid grid-rows-3 bg-contain bg-center px-16 xl:px-56 h-[75vh]"
+        <div className="relative grid grid-rows-3 bg-contain bg-center px-16 xl:px-56 h-[20vh] md:h-[55vh] lg:h-[75vh]"
           style={{
             backgroundImage: `url('/imgs/integracao/banner-produto-individual.png')`
           }}
@@ -42,13 +42,13 @@ export default function Semente() {
               alt="selo embrapa"
               width={50}
               height={100}
-              className=""
+              className="w-8 h-8 md:w-16 md:h-16"
             />
             <Image
               src={linhas[selectedLinha].url}
               width={500}
               height={192}
-
+              className='w-[400px] h-full md:w-[500px]'
             />
           </div>
         </div>

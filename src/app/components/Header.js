@@ -44,7 +44,7 @@ export default function Header({ footerRef }) {
               <img
                 alt="Logo"
                 src="/imgs/integracao/logo.png"
-                className="h-10 md:h-12 w-auto"
+                className="h-8 md:h-12 w-auto"
               />
             </a>
           </div>
