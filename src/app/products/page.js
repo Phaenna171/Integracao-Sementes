@@ -8,7 +8,7 @@ export default function ProductsPage() {
   return (
     <>
       <ProductProvider>
-        <FormReclamacao />
+        <MainProducts />
       </ProductProvider>
     </>
   )
