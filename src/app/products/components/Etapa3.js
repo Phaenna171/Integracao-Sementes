@@ -33,99 +33,212 @@ export default function Etapa3({ onChange, data }) {
           </div>
         </div>
 
-        <div className='grid grid-cols-4 gap-x-8 gap-y-2'>
+        <div className='grid grid-cols-4 pb-8 gap-x-8 gap-y-2'>
           <h2 className='col-span-4 font-openSans text-xl text-[#2C674B] pt-8 pb-2 font-medium'>Correção do solo</h2>
-          <h2 className='col-span-4 font-openSans text-lg text-[#2C674B] pt-0 pb-0 font-light'>Calcário:</h2>
 
+
+          <h2 className='col-span-4 font-openSans text-lg text-[#2C674B] pt-0 pb-0 font-light'>Calcário:</h2>
           <div className='col-span-1'>
             <label className='font-openSans text-sm '>
-              Data da aplicação
-              <input className='py-1 rounded-xl border-2 border-[#E3EBD6] px-3 w-full' type="date" name="dataAplicacao" value={data.dataAplicacao || ''} onChange={handleInputChange} />
+              Fonte:
+              <input className='py-1 rounded-xl border-2 border-[#E3EBD6] px-3 w-full' type="text" name="fonteCalcario" value={data.fonteCalcario || ''} onChange={handleInputChange} />
             </label>
           </div>
           <div className='col-span-1'>
             <label className='font-openSans text-sm '>
               Data da aplicação
-              <input className='py-1 rounded-xl border-2 border-[#E3EBD6] px-3 w-full' type="date" name="dataAplicacao" value={data.dataAplicacao || ''} onChange={handleInputChange} />
+              <input className='py-1 rounded-xl border-2 border-[#E3EBD6] px-3 w-full' type="date" name="dataCalcario" value={data.dataAplicacao || ''} onChange={handleInputChange} />
             </label>
           </div>
+          <div className='col-span-1'>
+            <label className='font-openSans text-sm '>
+              Sistema de aplicação:
+              <input className='py-1 rounded-xl border-2 border-[#E3EBD6] px-3 w-full' type="text" name="sistemaCalcario" value={data.sistemaCalcario || ''} onChange={handleInputChange} />
+            </label>
+          </div>
+          <div className='col-span-1'>
+            <label className='font-openSans text-sm '>
+              Quantidade (ton/ha):
+              <input className='py-1 rounded-xl border-2 border-[#E3EBD6] px-3 w-full' type="text" name="qtdCalcario" value={data.qtdCalcario || ''} onChange={handleInputChange} />
+            </label>
+          </div>
+
+          <h2 className='col-span-4 font-openSans text-lg text-[#2C674B] pt-0 pb-0 font-light'>Gesso:</h2>
+          <div className='col-span-1'>
+            <label className='font-openSans text-sm '>
+              Fonte:
+              <input className='py-1 rounded-xl border-2 border-[#E3EBD6] px-3 w-full' type="text" name="fonteGesso" value={data.fonteGesso || ''} onChange={handleInputChange} />
+            </label>
+          </div>
+          <div className='col-span-1'>
+            <label className='font-openSans text-sm '>
+              Data da aplicação
+              <input className='py-1 rounded-xl border-2 border-[#E3EBD6] px-3 w-full' type="date" name="dataGesso" value={data.dataGesso || ''} onChange={handleInputChange} />
+            </label>
+          </div>
+          <div className='col-span-1'>
+            <label className='font-openSans text-sm '>
+              Sistema de aplicação:
+              <input className='py-1 rounded-xl border-2 border-[#E3EBD6] px-3 w-full' type="text" name="sistemaGesso" value={data.sistemaGesso || ''} onChange={handleInputChange} />
+            </label>
+          </div>
+          <div className='col-span-1'>
+            <label className='font-openSans text-sm '>
+              Quantidade (ton/ha):
+              <input className='py-1 rounded-xl border-2 border-[#E3EBD6] px-3 w-full' type="text" name="qtdGesso" value={data.qtdGesso || ''} onChange={handleInputChange} />
+            </label>
+          </div>
+
+        </div>
+
+        <div className='grid grid-cols-4 pb-8 gap-x-8 gap-y-2'>
+          <h2 className='col-span-4 font-openSans text-xl text-[#2C674B] pt-8 pb-2 font-medium'>Adubação de plantio</h2>
+
+
+          <h2 className='col-span-4 font-openSans text-lg text-[#2C674B] pt-0 pb-0 font-light'>Adubação antes do plantio:</h2>
+          <div className='col-span-1'>
+            <label className='font-openSans text-sm '>
+              Fonte:
+              <input className='py-1 rounded-xl border-2 border-[#E3EBD6] px-3 w-full' type="text" name="fonteAntesPlantio" value={data.fonteAntesPlantio || ''} onChange={handleInputChange} />
+            </label>
+          </div>
+          <div className='col-span-1'>
+            <label className='font-openSans text-sm '>
+              Data da aplicação
+              <input className='py-1 rounded-xl border-2 border-[#E3EBD6] px-3 w-full' type="date" name="dataAntesPlantio" value={data.dataAntesPlantio || ''} onChange={handleInputChange} />
+            </label>
+          </div>
+          <div className='col-span-1'>
+            <label className='font-openSans text-sm '>
+              Sistema de aplicação:
+              <input className='py-1 rounded-xl border-2 border-[#E3EBD6] px-3 w-full' type="text" name="sistemaAntesPlantio" value={data.sistemaAntesPlantio || ''} onChange={handleInputChange} />
+            </label>
+          </div>
+          <div className='col-span-1'>
+            <label className='font-openSans text-sm '>
+              Quantidade (ton/ha):
+              <input className='py-1 rounded-xl border-2 border-[#E3EBD6] px-3 w-full' type="text" name="qtdAntesPlantio" value={data.qtdAntesPlantio || ''} onChange={handleInputChange} />
+            </label>
+          </div>
+
+          <h2 className='col-span-4 font-openSans text-lg text-[#2C674B] pt-0 pb-0 font-light'>Adubação simultânea ao plantio:</h2>
+          <div className='col-span-1'>
+            <label className='font-openSans text-sm '>
+              Fonte:
+              <input className='py-1 rounded-xl border-2 border-[#E3EBD6] px-3 w-full' type="text" name="fonteSimultaneaPlantio" value={data.fonteSimultaneaPlantio || ''} onChange={handleInputChange} />
+            </label>
+          </div>
+          <div className='col-span-1'>
+            <label className='font-openSans text-sm '>
+              Data da aplicação
+              <input className='py-1 rounded-xl border-2 border-[#E3EBD6] px-3 w-full' type="date" name="dataSimultaneaPlantio" value={data.dataSimultaneaPlantio || ''} onChange={handleInputChange} />
+            </label>
+          </div>
+          <div className='col-span-1'>
+            <label className='font-openSans text-sm '>
+              Sistema de aplicação:
+              <input className='py-1 rounded-xl border-2 border-[#E3EBD6] px-3 w-full' type="text" name="sistemaSimultaneoPlantio" value={data.sistemaSimultaneoPlantio || ''} onChange={handleInputChange} />
+            </label>
+          </div>
+          <div className='col-span-1'>
+            <label className='font-openSans text-sm '>
+              Quantidade (ton/ha):
+              <input className='py-1 rounded-xl border-2 border-[#E3EBD6] px-3 w-full' type="text" name="qtdSimultaneaPlantio" value={data.qtdSimultaneaPlantio || ''} onChange={handleInputChange} />
+            </label>
+          </div>
+
 
         </div>
 
         <div className='grid grid-cols-4 gap-x-8 gap-y-2'>
-          <h2 className='col-span-4 font-openSans text-xl text-[#2C674B] pt-8 pb-0 font-medium'>Antecedentes da área</h2>
+          <h2 className='col-span-4 font-openSans text-xl text-[#2C674B] pt-8 pb-2 font-medium'>Trato Cultural pré-semeadura</h2>
 
-          <div className='col-span-2'>
+
+          <h2 className='col-span-4 font-openSans text-lg text-[#2C674B] pt-0 pb-0 font-light'>Controle de plantas daninhas:</h2>
+          <div className='col-span-1'>
             <label className='font-openSans text-sm '>
-              Cultura remanescente:
-              <input className='py-1 rounded-xl border-2 border-[#E3EBD6] px-3 w-full' type="text" name="culturaRemanescente" value={data.culturaRemanescente || ''} onChange={handleInputChange} />
-            </label>
-          </div>
-          <div className='col-span-2'>
-            <label className='font-openSans text-sm '>
-              Cultura anterior:
-              <input className='py-1 rounded-xl border-2 border-[#E3EBD6] px-3 w-full' type="text" name="culturaAnterior" value={data.culturaAnterior || ''} onChange={handleInputChange} />
-            </label>
-          </div>
-          <div className='col-span-3'>
-            <label className='font-openSans text-sm '>
-              Manejo de herbicida:
-              <input className='py-1 rounded-xl border-2 border-[#E3EBD6] px-3 w-full' type="text" name="manejoHerbicicida" value={data.manejoHerbicicida || ''} onChange={handleInputChange} />
-            </label>
-          </div>
-          <div className='col-span-2'>
-            <label className='font-openSans text-sm '>
-              Antecedentes e invasoras na área:
-              <input className='py-1 rounded-xl border-2 border-[#E3EBD6] px-3 w-full' type="text" name="antecedentesEInvasores" value={data.antecedentesEInvasores || ''} onChange={handleInputChange} />
-            </label>
-          </div>
-          <div className='col-span-2'>
-            <label className='font-openSans text-sm '>
-              Antecedência de ocorrência de pragas e doenças:
-              <input className='py-1 rounded-xl border-2 border-[#E3EBD6] px-3 w-full' type="text" name="pragasEDoencas" value={data.pragasEDoencas || ''} onChange={handleInputChange} />
-            </label>
-          </div>
-          <div className='col-span-2'>
-            <label className='font-openSans text-sm '>
-              Topografia:
-              <input className='py-1 rounded-xl border-2 border-[#E3EBD6] px-3 w-full' type="text" name="topografia" value={data.topografia || ''} onChange={handleInputChange} />
-            </label>
-          </div>
-          <div className='col-span-2'>
-            <label className='font-openSans text-sm '>
-              Tipo de solo:
-              <input className='py-1 rounded-xl border-2 border-[#E3EBD6] px-3 w-full' type="text" name="tipoDeSolo" value={data.tipoDeSolo || ''} onChange={handleInputChange} />
-            </label>
-          </div>
-          <div className='col-span-4'>
-            <label className='font-openSans text-sm '>
-              Característica do solo:
-              <input className='py-1 rounded-xl border-2 border-[#E3EBD6] px-3 w-full' type="text" name="caracteristicaDoSolo" value={data.caracteristicaDoSolo || ''} onChange={handleInputChange} />
-            </label>
-          </div>
-          <div className='col-span-3'>
-            <label className='font-openSans text-sm '>
-              Problemas observados(Compactação do solo, Restos de galho, Palhada):
-              <input className='py-1 rounded-xl border-2 border-[#E3EBD6] px-3 w-full' type="text" name="caracteristicaDoSolo" value={data.caracteristicaDoSolo || ''} onChange={handleInputChange} />
+              Herbicida:
+              <input className='py-1 rounded-xl border-2 border-[#E3EBD6] px-3 w-full' type="text" name="herbicidaDaninhas" value={data.herbicidaDaninhas || ''} onChange={handleInputChange} />
             </label>
           </div>
           <div className='col-span-1'>
-            <label className='font-openSans text-sm'>
-              Análise do solo disponível:
-              <select
-                className='py-1 rounded-xl border-2 border-[#E3EBD6] px-3 w-full'
-                name="analiseDoSolo"
-                value={data.analiseDoSolo || ''}
-                onChange={handleInputChange}
-              >
-                <option value="sim">Sim</option>
-                <option value="nao">Não</option>
+            <label className='font-openSans text-sm '>
+              Data da aplicação
+              <input className='py-1 rounded-xl border-2 border-[#E3EBD6] px-3 w-full' type="date" name="dataDaninhas" value={data.dataDaninhas || ''} onChange={handleInputChange} />
+            </label>
+          </div>
+          <div className='col-span-1'>
+            <label className='font-openSans text-sm '>
+              Sistema de aplicação:
+              <input className='py-1 rounded-xl border-2 border-[#E3EBD6] px-3 w-full' type="text" name="sistemaDaninhas" value={data.sistemaDaninhas || ''} onChange={handleInputChange} />
+            </label>
+          </div>
+          <div className='col-span-1'>
+            <label className='font-openSans text-sm '>
+              Quantidade (ton/ha):
+              <input className='py-1 rounded-xl border-2 border-[#E3EBD6] px-3 w-full' type="text" name="qtdDaninhas" value={data.qtdDaninhas || ''} onChange={handleInputChange} />
+            </label>
+          </div>
 
-              </select>
+          <h2 className='col-span-4 font-openSans text-lg text-[#2C674B] pt-0 pb-0 font-light'>Controle de pragas:</h2>
+          <div className='col-span-1'>
+            <label className='font-openSans text-sm '>
+              Produto:
+              <input className='py-1 rounded-xl border-2 border-[#E3EBD6] px-3 w-full' type="text" name="fontePragas" value={data.fontePragas || ''} onChange={handleInputChange} />
+            </label>
+          </div>
+          <div className='col-span-1'>
+            <label className='font-openSans text-sm '>
+              Data da aplicação
+              <input className='py-1 rounded-xl border-2 border-[#E3EBD6] px-3 w-full' type="date" name="dataPragas" value={data.dataPragas || ''} onChange={handleInputChange} />
+            </label>
+          </div>
+          <div className='col-span-1'>
+            <label className='font-openSans text-sm '>
+              Sistema de aplicação:
+              <input className='py-1 rounded-xl border-2 border-[#E3EBD6] px-3 w-full' type="text" name="sistemaPragas" value={data.sistemaPragas || ''} onChange={handleInputChange} />
+            </label>
+          </div>
+          <div className='col-span-1'>
+            <label className='font-openSans text-sm '>
+              Quantidade (ton/ha):
+              <input className='py-1 rounded-xl border-2 border-[#E3EBD6] px-3 w-full' type="text" name="qtdPragas" value={data.qtdPragas || ''} onChange={handleInputChange} />
+            </label>
+          </div>
+        </div>
+
+        <div className='grid grid-cols-4 gap-x-8 gap-y-2'>
+          <h2 className='col-span-4 font-openSans text-xl text-[#2C674B] pt-8 pb-2 font-medium'>Adubação de cobertura</h2>
+
+
+          <h2 className='col-span-4 font-openSans text-lg text-[#2C674B] pt-0 pb-0 font-light'>Realizado adubação de cobertura:</h2>
+          <div className='col-span-1'>
+            <label className='font-openSans text-sm '>
+              Fonte:
+              <input className='py-1 rounded-xl border-2 border-[#E3EBD6] px-3 w-full' type="text" name="fonteAdubacao" value={data.fonteAdubacao || ''} onChange={handleInputChange} />
+            </label>
+          </div>
+          <div className='col-span-1'>
+            <label className='font-openSans text-sm '>
+              Data da aplicação
+              <input className='py-1 rounded-xl border-2 border-[#E3EBD6] px-3 w-full' type="date" name="dataAdubacao" value={data.dataAdubacao || ''} onChange={handleInputChange} />
+            </label>
+          </div>
+          <div className='col-span-1'>
+            <label className='font-openSans text-sm '>
+              Sistema de aplicação:
+              <input className='py-1 rounded-xl border-2 border-[#E3EBD6] px-3 w-full' type="text" name="sistemaAdubacao" value={data.sistemaAdubacao || ''} onChange={handleInputChange} />
+            </label>
+          </div>
+          <div className='col-span-1'>
+            <label className='font-openSans text-sm '>
+              Quantidade (ton/ha):
+              <input className='py-1 rounded-xl border-2 border-[#E3EBD6] px-3 w-full' type="text" name="qtdAdubacao" value={data.qtdAdubacao || ''} onChange={handleInputChange} />
             </label>
           </div>
 
         </div>
+
       </div>
 
 
