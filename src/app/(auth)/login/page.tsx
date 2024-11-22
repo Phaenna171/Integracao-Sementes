@@ -27,7 +27,7 @@ export default function Page() {
             <div className="h-[600px] px-[30px] py-12 rounded-2xl shadow gap-[27px] inline-flex bg-white">
                 <div className="flex-col justify-center items-center gap-10 inline-flex">
                     <div className="justify-center items-center gap-[10.59px] inline-flex">
-                        <Image unoptimized width={260} height={300} src="/imgs/integracao/logo.png" alt="Logo safrasul sementes" />
+                        <Image unoptimized width={260} height={300} src="/imgs/integracao/logo.png" alt="Logo integração sementes" />
                     </div>
                     <div className="flex-col justify-start items-start gap-10 flex">
                         <div className="w-[400px] text-center text-[#ea722d] text-3xl font-bold leading-[38px]">Autenticação do Usuário</div>

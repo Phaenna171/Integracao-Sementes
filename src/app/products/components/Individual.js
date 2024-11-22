@@ -7,7 +7,7 @@ import productService from '@/services/product.service';
 
 export default function Individual() {
 
-  const { selectedLinha, setSelectedLinha, selectedCategoria, setSelectedCategoria, setSelectedSemente, linhas } = useContext(ProductContext)
+  const { selectedLinha, setSelectedLinha, selectedCategoria, setSelectedCategoria, setSelectedSemente, linhas, selectedSemente } = useContext(ProductContext)
 
   const [products, setProducts] = useState([]);
 
@@ -22,6 +22,15 @@ export default function Individual() {
     }
     getData()
   }, []);
+
+  function getLine() {
+    switch (selectedLinha) {
+      case 'Linha Pro': return '/imgs/integracao/linhas-quali.png'
+      case 'Linha Quali': return '/imgs/integracao/linhas-pro.png'
+      case 'Linha Total Quali': return '/imgs/integracao/linhas-total-quali.png'
+      case 'Mix': return '/imgs/integracao/linhas-mix.png'
+    }
+  }
 
   return (
     <>
@@ -40,7 +49,7 @@ export default function Individual() {
           </Link>
 
           <Image
-            src={linhas[selectedLinha].url}
+            src={getLine()}
             alt='Pacote'
             width={200}
             height={192}
@@ -48,7 +57,7 @@ export default function Individual() {
           />
           <div className='w-full flex flex-col gap-y-4'>
             <div className='relative flex justify-center md:justify-between'>
-              <h1 className="text-center font-effra text-3xl md:text-4xl text-[#2C674B] pb-8 md:pb-0">{linhas[selectedLinha].nome}</h1>
+              <h1 className="text-center font-effra text-3xl md:text-4xl text-[#2C674B] pb-8 md:pb-0">{products.filter(el => el.line == selectedLinha && el.category == selectedCategoria)[selectedSemente]?.title}</h1>
               <Link href="/products" onClick={() => { setSelectedLinha("") }} className='hidden md:block'>
                 <div className='flex gap-x-2 items-center'>
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#696D69" class="bi bi-chevron-left" viewBox="0 0 16 16">

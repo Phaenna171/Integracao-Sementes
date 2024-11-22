@@ -24,14 +24,21 @@ export default function Semente() {
     getData()
   }, [selectedSemente]);
 
-  console.log(selectedLinha,selectedCategoria,selectedSemente, products)
-  
+  function getLine() {
+    switch (selectedLinha) {
+      case 'Linha Pro': return '/imgs/integracao/linhas-quali.png'
+      case 'Linha Quali': return '/imgs/integracao/linhas-pro.png'
+      case 'Linha Total Quali': return '/imgs/integracao/linhas-total-quali.png'
+      case 'Mix': return '/imgs/integracao/linhas-mix.png'
+    }
+  }
+
   return (
     <>
       <div className='pb-16'>
-        <div className="relative grid grid-rows-3 bg-contain bg-center px-16 xl:px-56 h-[20vh] md:h-[55vh] lg:h-[75vh]"
+        <div className="relative grid grid-rows-3 bg-contain bg-center px-16 xl:px-56 h-[20vh] md:h-[55vh] lg:h-[75vh] bg-no-repeat bg-cover"
           style={{
-            backgroundImage: `url('/imgs/integracao/banner-produto-individual.png')`
+            backgroundImage: `url(${products.filter(el => el.line == selectedLinha && el.category == selectedCategoria)[selectedSemente]?.carouselPhotos[0]})`
           }}
         >
           <div className='absolute right-40 -bottom-28 flex flex-col items-end'>
@@ -43,7 +50,7 @@ export default function Semente() {
               className="w-8 h-8 md:w-16 md:h-16"
             />
             <Image
-              src={products.filter(el => el.line == selectedLinha && el.category == selectedCategoria)[selectedSemente]?.carouselPhotos[0]}
+              src={getLine()}
               width={500}
               height={192}
               className='w-[400px] h-full md:w-[500px]'
@@ -52,7 +59,7 @@ export default function Semente() {
         </div>
         <div className='px-60 pt-28'>
           <div className='pb-16'>
-            <p className="text-center md:text-start font-openSans font-semibold text-xl text-[#354D4D]">{products.filter(el => el.line == selectedLinha && el.category == selectedCategoria)[selectedSemente]?.line}</p>
+            <p className="text-center md:text-start font-openSans font-semibold text-xl text-[#354D4D]">{selectedCategoria}</p>
             <h1 className="font-effra text-3xl text-center md:text-start md:text-4xl lg:text-5xl text-[#136736] leading-8">{products.filter(el => el.line == selectedLinha && el.category == selectedCategoria)[selectedSemente]?.title}</h1>
             <p className="text-center md:text-start font-openSans text-sm text-[#354D4D]">{products.filter(el => el.line == selectedLinha && el.category == selectedCategoria)[selectedSemente]?.subtitle}</p>
           </div>
@@ -68,7 +75,7 @@ export default function Semente() {
                 className={`py-1 px-8 ${index % 2 !== 0 ? 'bg-[#ACD3B8]' : 'bg-[#EAFCF0]'
                   }`}
               >
-                <p className="font-effra text-[#2D2F2E]">{info.value}</p>
+                <p className="font-effra text-[#2D2F2E]">{info.key}</p>
 
               </div>
             ))}

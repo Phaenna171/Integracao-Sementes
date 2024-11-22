@@ -5,7 +5,7 @@ import React from "react";
 export default function Page() {
     return (
         <main className="bg-white h-screen w-full flex flex-col gap-8 justify-center">
-            <Image className="flex self-center" unoptimized width={300} height={300} src="/imgs/integracao/logo.png" alt="Logo Safrasul" />
+            <Image className="flex self-center" unoptimized width={300} height={300} src="/imgs/integracao/logo.png" alt="Logo Integração" />
             <div className="flex gap-10 justify-center flex-wrap w-full">
                 <Link href="/admin/produtos" className="md:w-[421px] md:h-[533px] w-full md:mx-0 mx-4 hover:scale-105 transition-all">
                     <Image unoptimized width={421} height={467} alt="Card PRODUTOS" className=" rounded-tl-2xl rounded-tr-2xl object-cover md:w-full w-full" src="/imgs/admin-produtos.png" />

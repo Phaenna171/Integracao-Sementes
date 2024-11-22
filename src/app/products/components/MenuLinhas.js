@@ -55,7 +55,7 @@ export default function MenuLinhas() {
           </div>
           <Link href="/products/mix"
             className='flex flex-col items-center'
-            onClick={() => { setSelectedLinha('Linha Mix') }}
+            onClick={() => { setSelectedLinha('Mix') }}
           >
             <Image
               src='/imgs/integracao/linhas-mix.png'

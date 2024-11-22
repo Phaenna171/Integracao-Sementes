@@ -5,7 +5,7 @@ import React from "react";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Admin | Safrasul",
+  title: "Admin | Integração",
   icons: {
     icon: "/imgs/logo.svg",
   },

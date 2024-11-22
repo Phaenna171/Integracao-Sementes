@@ -5,6 +5,7 @@ import AddProductModal from "./add-product.modal";
 import DeleteProductModal from "./delete-product.modal";
 import productService from "@/services/product.service";
 import EditProductModal from "./edit-product.modal";
+import Spinner from "@/components/spinner";
 
 export default function Page() {
     const [isAddModalOpen, setAddModalOpen] = useState(false);
@@ -13,6 +14,7 @@ export default function Page() {
     const [products, setProducts] = useState([]);
     const [productToEdit, setProductToEdit] = useState()
     const [productToDelete, setProductToDelete] = useState('')
+    const [showSpinner, setShowSpinner] = useState(false);
 
     useEffect(() => {
         getData()
@@ -28,6 +30,7 @@ export default function Page() {
     }
 
     async function handleDelete() {
+        setShowSpinner(true)
         const result = await productService.delete(productToDelete)
         if (result.error) alert(result.message);
         else {
@@ -35,13 +38,16 @@ export default function Page() {
             alert('Produto removido')
             location.reload()
         }
-
+        setShowSpinner(false)
     }
 
     return (
         <main className="p-10 bg-white h-full">
-            <h1 className="text-4xl font-bold mb-10">PRODUTOS</h1>
 
+            <Spinner isVisible={showSpinner} />
+            
+            <h1 className="text-4xl font-bold mb-10">PRODUTOS</h1>
+            
             <div className="flex gap-6 justify-between md:flex-nowrap flex-wrap">
                 <div className="relative flex flex-col gap-4 h-fit">
                     <div onClick={() => setAddModalOpen(true)} className="cursor-pointer flex justify-center items-center relative md:w-[209px] w-full md:h-[175px] h-full z-0 top-0 left-0 rounded-lg overflow-hidden ">

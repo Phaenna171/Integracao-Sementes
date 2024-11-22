@@ -6,7 +6,7 @@ import Image from "next/image";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Autenticação Safrasul",
+  title: "Autenticação Integração",
   icons: {
     icon: "/imgs/logo.svg",
   },

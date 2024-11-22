@@ -3,7 +3,6 @@ import { createContext, useState, useRef } from 'react';
 export const ProductContext = createContext();
 
 export const ProductProvider = ({ children }) => {
-
   const [selectedLinha, setSelectedLinha] = useState('')
   const [selectedCategoria, setSelectedCategoria] = useState('Brachiaria')
   const [selectedSemente, setSelectedSemente] = useState('')
@@ -29,7 +28,6 @@ export const ProductProvider = ({ children }) => {
     },
   }
 
-  console.log(selectedLinha)
 
   return (
     <ProductContext.Provider value={{
