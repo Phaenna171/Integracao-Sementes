@@ -8,11 +8,11 @@ export default function Etapa3({ onChange, data }) {
 
   return (
     <div className='bg-[#E7F1E9] px-8 py-8 rounded-xl border-2 border-[#E3EBD6]'>
-      <h2 className='font-openSans text-2xl text-[#2C674B] pb-8 font-bold'>Etapa 1: Informações preliminares</h2>
+      <h2 className='font-openSans text-lg md:text-2xl text-[#2C674B] pb-8 font-bold'>Etapa 1: Informações preliminares</h2>
       <h2 className='font-openSans text-xl text-[#2C674B] pt-0 pb-4 font-medium'>Informações Comerciais</h2>
 
-      <div className='grid'>
-        <div className='grid grid-cols-4 gap-x-8 gap-y-2'>
+      <div className='flex flex-col md:grid '>
+        <div className='flex flex-col md:grid grid-cols-4 gap-x-8 gap-y-2'>
           <div className='col-span-3'>
             <label className='font-openSans text-sm '>
               Nota Fiscal de Compra Nº:
@@ -69,7 +69,7 @@ export default function Etapa3({ onChange, data }) {
           </div>
         </div>
 
-        <div className='grid grid-cols-4 gap-x-8 gap-y-2'>
+        <div className='flex flex-col md:grid grid-cols-4 gap-x-8 gap-y-2'>
           <h2 className='col-span-4 font-openSans text-xl text-[#2C674B] pt-8 pb-0 font-medium'>Motivo da Solicitação</h2>
           <div className='col-span-4'>
             <label className='font-openSans text-sm'>
@@ -104,7 +104,7 @@ export default function Etapa3({ onChange, data }) {
           </div>
         </div>
 
-        <div className='grid grid-cols-4 gap-x-8 gap-y-2'>
+        <div className='flex flex-col md:grid grid-cols-4 gap-x-8 gap-y-2'>
           <h2 className='col-span-4 font-openSans text-xl text-[#2C674B] pt-8 pb-0 font-medium'>Antecedentes da área</h2>
 
           <div className='col-span-2'>
@@ -172,10 +172,10 @@ export default function Etapa3({ onChange, data }) {
               >
                 <option value="sim">Sim</option>
                 <option value="nao">Não</option>
-                
+
               </select>
             </label>
-            </div>
+          </div>
 
         </div>
       </div>

@@ -39,14 +39,14 @@ export default function Header({ footerRef }) {
           className="w-full flex items-center justify-between"
         >
           <div className="flex flex-1">
-            <a href="#" className="p-2">
+            <Link href="/" className="p-2">
               <span className="sr-only">Integração Sementes</span>
               <img
                 alt="Logo"
                 src="/imgs/integracao/logo.png"
                 className="h-8 md:h-12 w-auto"
               />
-            </a>
+            </Link>
           </div>
           <div className="flex lg:hidden">
             <button

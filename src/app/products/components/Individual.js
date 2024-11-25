@@ -25,8 +25,8 @@ export default function Individual() {
 
   function getLine() {
     switch (selectedLinha) {
-      case 'Linha Pro': return '/imgs/integracao/linhas-quali.png'
-      case 'Linha Quali': return '/imgs/integracao/linhas-pro.png'
+      case 'Linha Pro': return '/imgs/integracao/linhas-pro.png'
+      case 'Linha Quali': return '/imgs/integracao/linhas-quali.png'
       case 'Linha Total Quali': return '/imgs/integracao/linhas-total-quali.png'
       case 'Mix': return '/imgs/integracao/linhas-mix.png'
     }

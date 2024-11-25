@@ -8,11 +8,11 @@ export default function Etapa3({ onChange, data }) {
 
   return (
     <div className='bg-[#E7F1E9] px-8 py-8 rounded-xl border-2 border-[#E3EBD6]'>
-      <h2 className='font-openSans text-2xl text-[#2C674B] pb-8 font-bold'>Etapa 2: Informações Técnicas</h2>
+      <h2 className='font-openSans text-lg md:text-2xl text-[#2C674B] pb-8 font-bold'>Etapa 2: Informações Técnicas</h2>
       <h2 className='font-openSans text-xl text-[#2C674B] pt-0 pb-4 font-medium'>Preparo de solo</h2>
 
-      <div className='grid'>
-        <div className='grid grid-cols-4 gap-x-8 gap-y-2'>
+      <div className='flex flex-col md:grid'>
+        <div className='flex flex-col md:grid grid-cols-4 gap-x-8 gap-y-2'>
           <div className='col-span-1'>
             <label className='font-openSans text-sm '>
               Data do início da preparação do solo:
@@ -33,7 +33,7 @@ export default function Etapa3({ onChange, data }) {
           </div>
         </div>
 
-        <div className='grid grid-cols-4 pb-8 gap-x-8 gap-y-2'>
+        <div className='flex flex-col md:grid grid-cols-4 pb-8 gap-x-8 gap-y-2'>
           <h2 className='col-span-4 font-openSans text-xl text-[#2C674B] pt-8 pb-2 font-medium'>Correção do solo</h2>
 
 
@@ -91,7 +91,7 @@ export default function Etapa3({ onChange, data }) {
 
         </div>
 
-        <div className='grid grid-cols-4 pb-8 gap-x-8 gap-y-2'>
+        <div className='flex flex-col md:grid grid-cols-4 pb-8 gap-x-8 gap-y-2'>
           <h2 className='col-span-4 font-openSans text-xl text-[#2C674B] pt-8 pb-2 font-medium'>Adubação de plantio</h2>
 
 
@@ -150,7 +150,7 @@ export default function Etapa3({ onChange, data }) {
 
         </div>
 
-        <div className='grid grid-cols-4 gap-x-8 gap-y-2'>
+        <div className='flex flex-col md:grid grid-cols-4 gap-x-8 gap-y-2'>
           <h2 className='col-span-4 font-openSans text-xl text-[#2C674B] pt-8 pb-2 font-medium'>Trato Cultural pré-semeadura</h2>
 
 
@@ -207,7 +207,7 @@ export default function Etapa3({ onChange, data }) {
           </div>
         </div>
 
-        <div className='grid grid-cols-4 gap-x-8 gap-y-2'>
+        <div className='flex flex-col md:grid grid-cols-4 gap-x-8 gap-y-2'>
           <h2 className='col-span-4 font-openSans text-xl text-[#2C674B] pt-8 pb-2 font-medium'>Adubação de cobertura</h2>
 
 
