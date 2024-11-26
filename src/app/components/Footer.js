@@ -8,11 +8,11 @@ const Footer = forwardRef((props, ref) => {
         <div className="flex flex-col md:flex-row justify-between items-center px-8 xl:px-36 py-4">
 
           <div>
-            <p className="text-white font-openSans font-light mb-4 md:mb-0">© 2024 Integração Sementes</p>
+            <p className="text-white font-openSans text-xs lg:text-base font-light mb-4 md:mb-0">© 2024 Integração Sementes</p>
           </div>
 
           <Link href="/ftr">
-            <p className="text-white font-openSans text-sm font-light mb-4 md:mb-0 underline cursor-pointer hover:opacity-50">FTR - Ficha Técnico de Reclamação </p>
+            <p className="text-white font-openSans text-xs lg:text-sm font-light mb-4 md:mb-0 underline cursor-pointer hover:opacity-50">FTR - Ficha Técnico de Reclamação </p>
           </Link>
 
           <div className="flex">

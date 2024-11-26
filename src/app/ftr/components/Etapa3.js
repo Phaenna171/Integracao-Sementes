@@ -47,7 +47,7 @@ export default function Etapa3({ onChange, data }) {
           <div className='col-span-1'>
             <label className='font-openSans text-sm '>
               Data da aplicação
-              <input className='py-1 rounded-xl border-2 border-[#E3EBD6] px-3 w-full' type="date" name="dataCalcario" value={data.dataAplicacao || ''} onChange={handleInputChange} />
+              <input className='py-1 rounded-xl border-2 border-[#E3EBD6] px-3 w-full' type="date" name="dataCalcario" value={data.dataCalcario || ''} onChange={handleInputChange} />
             </label>
           </div>
           <div className='col-span-1'>

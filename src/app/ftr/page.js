@@ -21,6 +21,12 @@ export default function FormReclamacao() {
   const avancarEtapa = () => setEtapa(etapa + 1);
   const retrocederEtapa = () => setEtapa(etapa - 1);
 
+  const handleSubmit = () => {
+    console.log(formData)
+    setFormData({})
+    setEtapa(1)
+  }
+
   const footerRef = useRef(null);
 
 
@@ -55,7 +61,7 @@ export default function FormReclamacao() {
           </button>}
 
           
-          {etapa === 6 && <button className='font-effra text-xl md:text-xl text-[#2C674B] pt-8 flex gap-x-2 items-center' onClick={() => console.log(formData)}>Enviar</button>}
+          {etapa === 6 && <button className='font-effra text-xl md:text-xl text-[#2C674B] pt-8 flex gap-x-2 items-center' onClick={() => handleSubmit()}>Enviar</button>}
         </div>
       </div>
       <Footer ref={footerRef} />

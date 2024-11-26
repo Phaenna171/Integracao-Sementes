@@ -4,7 +4,6 @@ import React from 'react';
 export default function Etapa1({ onChange, data }) {
   const handleInputChange = (e) => {
     onChange({ [e.target.name]: e.target.value });
-    console.log(data)
   };
 
   return (

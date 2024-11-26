@@ -13,13 +13,13 @@ export default function MenuLinhas() {
   return (
     <>
       <div className='md:h-[80vh] flex flex-col items-center justify-center'>
-        <div className='py-8 md:py-0 grid grid-cols-2 md:grid-cols-4 gap-x-10 gap-y-12'>
+        <div className='py-8 md:py-0 grid grid-cols-1 md:grid-cols-4 gap-x-10 gap-y-12'>
           <div
             className='flex flex-col items-center'
             onClick={() => { setSelectedLinha('Linha Quali') }}
           >
             <Image
-              src='/imgs/integracao/linhas-quali.png'
+              src='/imgs/integracao/linhas-total-quali.png'
               width={250}
               height={192}
             />

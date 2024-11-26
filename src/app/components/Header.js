@@ -44,7 +44,7 @@ export default function Header({ footerRef }) {
               <img
                 alt="Logo"
                 src="/imgs/integracao/logo.png"
-                className="h-8 md:h-12 w-auto"
+                className="h-12 md:h-12 w-auto"
               />
             </Link>
           </div>
@@ -55,7 +55,7 @@ export default function Header({ footerRef }) {
               className="inline-flex items-center justify-center p-2 text-[777]"
             >
               <span className="sr-only">Open main menu</span>
-              <Bars3Icon aria-hidden="true" className="h-6 w-6" />
+              <Bars3Icon aria-hidden="true" className="h-8 w-8" />
             </button>
           </div>
           <PopoverGroup className="hidden lg:flex lg:gap-x-12 items-center">
