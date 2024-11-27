@@ -47,6 +47,31 @@ class ProductService {
             return { error: true, message: error.message }
         }
     }
+
+    async manageCategories(action: string, data?: any, id?: string): Promise<IActionResponse> {
+        try {
+            let result;
+            switch (action) {
+                case "create":
+                    result = await apiService.post(EndpointEnum.CATEGORY, data, true);
+                    break;
+                case "update":
+                    result = await apiService.put(`${EndpointEnum.CATEGORY}${id}`, data, true);
+                    break;
+                case "delete":
+                    result = await apiService.delete(`${EndpointEnum.CATEGORY}${id}`, true);
+                    break;
+                case "getAll":
+                    result = await apiService.get(EndpointEnum.CATEGORY, true);
+                    break;
+                default:
+                    throw new Error("Invalid action");
+            }
+            return { error: false, data: result };
+        } catch (error) {
+            return { error: true, message: error.message };
+        }
+    }
 }
 
 const productService = new ProductService()

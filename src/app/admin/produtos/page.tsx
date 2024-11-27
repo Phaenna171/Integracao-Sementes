@@ -6,11 +6,13 @@ import DeleteProductModal from "./delete-product.modal";
 import productService from "@/services/product.service";
 import EditProductModal from "./edit-product.modal";
 import Spinner from "@/components/spinner";
+import ManageCategoryModal from "./manage-category.modal";
 
 export default function Page() {
     const [isAddModalOpen, setAddModalOpen] = useState(false);
     const [isEditModalOpen, setEditModalOpen] = useState(false);
     const [isDeleteModalOpen, setDeleteModalOpen] = useState(false);
+    const [isManageCategoryModalOpen, setManageCategoryModalOpen] = useState(false);
     const [products, setProducts] = useState([]);
     const [productToEdit, setProductToEdit] = useState()
     const [productToDelete, setProductToDelete] = useState('')
@@ -45,9 +47,9 @@ export default function Page() {
         <main className="p-10 bg-white h-full">
 
             <Spinner isVisible={showSpinner} />
-            
+
             <h1 className="text-4xl font-bold mb-10">PRODUTOS</h1>
-            
+
             <div className="flex gap-6 justify-between md:flex-nowrap flex-wrap">
                 <div className="relative flex flex-col gap-4 h-fit">
                     <div onClick={() => setAddModalOpen(true)} className="cursor-pointer flex justify-center items-center relative md:w-[209px] w-full md:h-[175px] h-full z-0 top-0 left-0 rounded-lg overflow-hidden ">
@@ -116,6 +118,14 @@ export default function Page() {
                 onClose={() => setDeleteModalOpen(false)}
                 onDelete={handleDelete}
             />
+            <ManageCategoryModal
+                isOpen={isManageCategoryModalOpen}
+                onClose={() => setManageCategoryModalOpen(false)}
+            />
+
+            <button onClick={() => setManageCategoryModalOpen(true)} className="fixed bottom-10 left-10 h-[34px] px-2.5 py-[5px] bg-[#056735] rounded-lg justify-center items-center gap-2.5 inline-flex">
+                <span className="text-white text-xs font-normal">Gerenciar categorias</span>
+            </button>
         </main>
     );
 }

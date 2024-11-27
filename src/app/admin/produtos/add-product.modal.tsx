@@ -1,11 +1,19 @@
 import Spinner from "@/components/spinner";
 import productService from "@/services/product.service";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function AddProductModal({ isOpen, onClose }) {
   const [table, setTable] = useState([{ key: "", }]);
   const [images, setImages] = useState<{ name: string, src: string, file?: File }[]>([{ name: "", src: "" }]);
   const [showSpinner, setShowSpinner] = useState(false);
+  const [Categories, setCategories] = useState([]);
+
+  useEffect(() => {
+    async function getCategories() {
+      setCategories((await productService.manageCategories('getAll')).data)
+    }
+    getCategories()
+  }, []);
 
   // const [uses, setUses] = useState([
   //   { id: 1, label: "Áreas Verdes", src: "/imgs/admin-products/icone_areas_verdes.png", selected: false },
@@ -165,14 +173,7 @@ export default function AddProductModal({ isOpen, onClose }) {
           className="w-full mb-4 p-2 border border-green-600 rounded"
         >
           <option value="" disabled selected hidden>Selecione uma categoria</option>
-          <option selected value="Brachiaria">Brachiaria</option>
-          <option value="Panicum">Panicum</option>
-          <option value="Leguminosas">Leguminosas</option>
-          <option value="Gramíneas">Gramíneas</option>
-          <option value="Brássicas">Brássicas</option>
-          <option value="Sementes de cobertura">Sementes de cobertura</option>
-          <option value="Poligonáceas">Poligonáceas</option>
-          <option value="Asteráceas">Asteráceas</option>
+          {Categories?.map((category, index) => <option key={category.id} selected={index == 0} value={category.name}>{category.name}</option>)}
         </select>
 
         <label className="block mb-2">Carrossel de fotos:</label>

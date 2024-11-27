@@ -7,5 +7,7 @@ export enum EndpointEnum {
 
     BLOG_POSTS = "blog-posts/",
 
-    PRODUCTS = "products/"
+    PRODUCTS = "products/",
+
+    CATEGORY = "products/category/",
 }

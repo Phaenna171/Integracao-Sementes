@@ -16,7 +16,6 @@ export default function Page() {
         const password = formData.get('password')
 
         const result = await authService.signin({ email, password })
-        console.log(result)
         if (result.error) alert(result.message)
         else router.push('/admin')
     }
