@@ -4,16 +4,15 @@ import React from 'react';
 export default function Etapa1({ onChange, data }) {
   const handleInputChange = (e) => {
     onChange({ [e.target.name]: e.target.value });
-    console.log(data)
   };
 
   return (
     <div className='bg-[#E7F1E9] px-8 py-8 rounded-xl border-2 border-[#E3EBD6]'>
-      <h2 className='font-openSans text-2xl text-[#2C674B] pb-8 font-bold'>Etapa 1: Informações preliminares</h2>
+      <h2 className='font-openSans text-lg md:text-2xl text-[#2C674B] pb-8 font-bold'>Etapa 1: Informações preliminares</h2>
 
-      <div className='grid'>
+      <div className='flex flex-col grid'>
 
-        <div className=' grid grid-cols-4 justify-between gap-x-8 gap-y-2'>
+        <div className='flex flex-col md:grid grid-cols-4 justify-between gap-x-8 gap-y-2'>
           <h2 className='col-span-4 font-openSans text-xl text-[#2C674B] pt-0 pb-2 font-medium'>Dados da reclamação</h2>
 
           <div className='row-start-2'>
@@ -38,7 +37,7 @@ export default function Etapa1({ onChange, data }) {
           </div>
         </div>
 
-        <div className=' grid grid-cols-4 justify-between gap-x-8 gap-y-2'>
+        <div className='flex flex-col md:grid grid-cols-4 justify-between gap-x-8 gap-y-2'>
           <h2 className='col-span-4 row-start-1 font-openSans text-xl text-[#2C674B] pt-8 pb-0 font-medium'>Dados da propriedade</h2>
 
           <div className='row-start-2 col-span-2'>
@@ -77,7 +76,7 @@ export default function Etapa1({ onChange, data }) {
           </div>
         </div>
 
-        <div className='grid grid-cols-4 gap-x-8 gap-y-2'>
+        <div className='flex flex-col md:grid grid-cols-4 gap-x-8 gap-y-2'>
           <h2 className='col-span-4 row-start-1 font-openSans text-xl text-[#2C674B] pt-8 pb-0 font-medium'>Dados da revenda</h2>
 
           <div className='col-span-3'>

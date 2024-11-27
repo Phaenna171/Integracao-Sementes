@@ -20,16 +20,17 @@ export default function Linha() {
     <>
       <GrupoWhatsApp />
       <Header footerRef={footerRef} />
-      {selectedLinha ? (
-        selectedSemente === ''? (
-          <Individual/>
+      <div className='min-h-[80vh]'>
+        {selectedLinha ? (
+          selectedSemente === '' ? (
+            <Individual />
+          ) : (
+            <Semente />
+          )
         ) : (
-          <Semente/>
-        )
-      ) : (
-        <MenuLinhas/>
-      )}
-
+          <MenuLinhas />
+        )}
+      </div>
       <Footer ref={footerRef} />
     </>
   )
