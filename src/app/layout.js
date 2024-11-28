@@ -2,7 +2,7 @@ import "./globals.css";
 
 export const metadata = {
   title: "Integração Sementes",
-  description: "Descrição da sua página aqui",
+  description: "Semeando qualidade, colhendo confiança!",
   icons: {
     icon: "/logo.png", // O caminho relativo para o seu ícone
   },
