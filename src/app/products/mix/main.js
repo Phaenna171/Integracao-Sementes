@@ -11,13 +11,13 @@ import { ProductContext } from '../context/ProductContext';
 
 export default function MainMix() {
   console.log('here')
-  const { selectedCategoria, setSelectedCategoria, selectedSemente,selectedProduct} = useContext(ProductContext)
-  console.log(selectedCategoria)
+  const { selectedCategoria, setSelectedCategoria, selectedSemente,selectedMix,setSelectedMix } = useContext(ProductContext)
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
     async function getData() {
-      const { data } = await productService.getAll()
+      const { data } = await productService.getAllMix()
+      console.log('\n\n',data,selectedMix)
       setProducts(data)
     }
     getData()
@@ -35,7 +35,7 @@ export default function MainMix() {
     <>
       <GrupoWhatsApp />
       <Header />
-      {selectedProduct === false ? (
+      {!selectedMix ? (
         <div className='px-32 pt-16'>
           <div className='flex items-center gap-x-10'>
             <Image
@@ -85,21 +85,21 @@ export default function MainMix() {
 
           <div className=" px-8 md:px-20 py-16">
             <div className="grid grid-cols-4 gap-x-8 md:gap-x-0">
-              {mix.map((semente, index) => (
+              {products?.map((mix, index) => (
                 <div
                   key={index}
                   className="flex flex-col justify-start items-center pb-4 md:pb-16 cursor-pointer hover:opacity-80"
-                  onClick={() => { setSelectedProduct(true) }}
+                  onClick={() => { setSelectedMix(mix) }}
                 >
                   <Image
-                    src={semente.url}
+                    src={mix.productImage}
                     alt="Palha"
                     width={150}
                     height={93.02}
                     className=""
                   />
                   <p className="text-[#818181] text-center md:text-2xl font-openSans font-semibold pt-2">
-                    {semente.nome}
+                    {mix.name}
                   </p>
                 </div>
 
@@ -114,16 +114,18 @@ export default function MainMix() {
         <div>
           <div className="relative flex bg-contain bg-center px-16 xl:px-56 h-[60vh] items-end"
             style={{
-              backgroundImage: `url('/imgs/integracao/banner-produto-individual.png')`
+              backgroundImage: `url(${selectedMix.backgroundImage})`,
+              backgroundRepeat: 'no-repeat',
+              backgroundSize: 'cover'
             }}
 
           >
-            <h1 className="text-white pb-10 text-5xl md:text-6xl font-effra">Produto</h1>
+            <h1 className="text-white pb-10 text-5xl md:text-6xl font-effra">{selectedMix.name}</h1>
           </div>
           <div className="relative px-4 md:px-52 py-20">
             <div className="relative z-10 flex justify-between gap-x-20 pb-2 md:pb-0 md:gap-x-16">
               <Image
-                src='/imgs/integracao/mix-palha.png'
+                src={selectedMix.productImage}
                 alt="Semente"
                 width={300}
                 height={93.02}
@@ -133,10 +135,10 @@ export default function MainMix() {
                 <div className="py-8 flex flex-col items-end md:items-start">
                   <h1 className="text-[#414141] font-openSans font-bold md:text-xl">Recomendação - 20 kg/Ha</h1>
                   <div className="bg-[#00AC64] rounded-xl py-4 px-6 mt-4 w-[80%]">
-                    <p className="font-openSans text-xs text-white">Out - Mar</p>
-                    <p className="font-openSans text-lg font-bold underline underline-offset-4 text-[#032A29]">Out - Mar</p>
+                    <p className="font-openSans text-xs text-white">Época de plantio</p>
+                    <p className="font-openSans text-lg font-bold underline underline-offset-4 text-[#032A29]">{selectedMix.plantingSeason}</p>
                     <p className="font-openSans text-xs text-white">Manejo</p>
-                    <p className="text-[#032A29] font-openSans text-lg font-bold">80 a 100 dias</p>
+                    <p className="text-[#032A29] font-openSans text-lg font-bold">{selectedMix.management}</p>
                   </div>
                 </div>
                 <div className="flex flex-col justify-center">
@@ -154,9 +156,9 @@ export default function MainMix() {
 
             <div className=" relative z-10 flex justify-between">
               <ul className="space-y-2 py-8">
-                {/* {lista1.map((item, index) => (
+                {selectedMix.topics.map((item, index) => (
                   <li key={index} className="font-openSans font-medium text-[#414141] tracking-wider"><span className="pr-2">&bull;</span>{item}</li>
-                ))} */}
+                ))}
               </ul>
             </div>
 
@@ -186,7 +188,7 @@ export default function MainMix() {
               </div>
               <div
                 className='flex gap-x-2 items-center cursor-pointer hover:opacity-70'
-                onClick={() => { setSelectedProduct(false) }}
+                onClick={() => { setSelectedMix(null) }}
               >
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#696D69" class="bi bi-chevron-left" viewBox="0 0 16 16">
                   <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0" />

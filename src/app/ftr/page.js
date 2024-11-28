@@ -9,6 +9,7 @@ import Etapa6 from './components/Etapa6'
 import Header from '@/app/components/Header';
 import GrupoWhatsApp from '@/app/components/GrupoWhatsApp';
 import Footer from '@/app/components/Footer';
+import mailService from '@/services/mail.service';
 
 export default function FormReclamacao() {
   const [etapa, setEtapa] = useState(1);
@@ -21,11 +22,22 @@ export default function FormReclamacao() {
   const avancarEtapa = () => setEtapa(etapa + 1);
   const retrocederEtapa = () => setEtapa(etapa - 1);
 
-  const handleSubmit = () => {
-    console.log(formData)
-    setFormData({})
-    setEtapa(1)
-  }
+  const handleSubmit = async () => {
+    try {
+      const response = await mailService.register(formData)
+  
+      if (!response.error) {
+        alert('Formulário enviado com sucesso!');
+        setFormData({}); // Limpar o formulário
+        setEtapa(1); // Voltar para a primeira etapa
+      } else {
+        alert('Erro ao enviar o formulário. Tente novamente.');
+      }
+    } catch (error) {
+      console.error('Erro ao enviar o formulário:', error);
+      alert('Erro ao enviar o formulário. Tente novamente.');
+    }
+  };
 
   const footerRef = useRef(null);
 
@@ -36,11 +48,11 @@ export default function FormReclamacao() {
       <Header footerRef={footerRef} />
       <div className=' py-16 px-4 xl:px-40'>
         <h1 className=' font-effra text-2xl md:text-4xl text-[#2C674B] pb-8 text-center md:text-start'>Ficha Técnica de Reclamação - FTR</h1>
-        {etapa === 1 && <Etapa1 onChange={handleChange} data={formData} />}
+        {/* {etapa === 1 && <Etapa1 onChange={handleChange} data={formData} />}
         {etapa === 2 && <Etapa2 onChange={handleChange} data={formData} />}
         {etapa === 3 && <Etapa3 onChange={handleChange} data={formData} />}
         {etapa === 4 && <Etapa4 onChange={handleChange} data={formData} />}
-        {etapa === 5 && <Etapa5 onChange={handleChange} data={formData} />}
+        {etapa === 5 && <Etapa5 onChange={handleChange} data={formData} />} */}
         {etapa === 6 && <Etapa6 onChange={handleChange} data={formData} />}
         <div className='flex justify-center gap-x-8'>
 

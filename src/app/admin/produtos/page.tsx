@@ -7,8 +7,10 @@ import productService from "@/services/product.service";
 import EditProductModal from "./edit-product.modal";
 import Spinner from "@/components/spinner";
 import ManageCategoryModal from "./manage-category.modal";
+import AddMixModal from "./add-mix-modal";
 
 export default function Page() {
+    const [isAddMixModalOpen, setAddMixModalOpen] = useState(false);
     const [isAddModalOpen, setAddModalOpen] = useState(false);
     const [isEditModalOpen, setEditModalOpen] = useState(false);
     const [isDeleteModalOpen, setDeleteModalOpen] = useState(false);
@@ -51,16 +53,29 @@ export default function Page() {
             <h1 className="text-4xl font-bold mb-10">PRODUTOS</h1>
 
             <div className="flex gap-6 justify-between md:flex-nowrap flex-wrap">
-                <div className="relative flex flex-col gap-4 h-fit">
-                    <div onClick={() => setAddModalOpen(true)} className="cursor-pointer flex justify-center items-center relative md:w-[209px] w-full md:h-[175px] h-full z-0 top-0 left-0 rounded-lg overflow-hidden ">
-                        <Image unoptimized width={300} height={300} alt="Card produtos" className="w-full h-full object-cover" src="/imgs/admin-produtos.png" />
-                        <div className="bg-black absolute w-full h-full top-0 left-0 bg-opacity-70"></div>
-                        <span className="absolute text-white text-7xl font-black z-10">+</span>
+                <div className="flex flex-col gap-10">
+                    <div className="relative flex flex-col gap-4 h-fit">
+                        <div onClick={() => setAddModalOpen(true)} className="cursor-pointer flex justify-center items-center relative md:w-[209px] w-full md:h-[175px] h-full z-0 top-0 left-0 rounded-lg overflow-hidden ">
+                            <Image unoptimized width={300} height={300} alt="Card produtos" className="w-full h-full object-cover" src="/imgs/admin-produtos.png" />
+                            <div className="bg-black absolute w-full h-full top-0 left-0 bg-opacity-70"></div>
+                            <span className="absolute text-white text-7xl font-black z-10">+</span>
+                        </div>
+                        <button onClick={() => setAddModalOpen(true)} className="h-[34px] px-2.5 py-[5px] bg-[#056735] rounded-lg justify-center items-center gap-2.5 inline-flex">
+                            <span className="text-white text-xs font-black">+</span>
+                            <span className="text-white text-xs font-normal"> Adicionar novo produto</span>
+                        </button>
                     </div>
-                    <button onClick={() => setAddModalOpen(true)} className="h-[34px] px-2.5 py-[5px] bg-[#056735] rounded-lg justify-center items-center gap-2.5 inline-flex">
-                        <span className="text-white text-xs font-black">+</span>
-                        <span className="text-white text-xs font-normal"> Adicionar novo produto</span>
-                    </button>
+                    <div className="relative flex flex-col gap-4 h-fit">
+                        <div onClick={() => setAddMixModalOpen(true)} className="cursor-pointer flex justify-center items-center relative md:w-[209px] w-full md:h-[175px] h-full z-0 top-0 left-0 rounded-lg overflow-hidden ">
+                            <Image unoptimized width={300} height={300} alt="Card produtos" className="w-full h-full object-cover" src="/imgs/admin-produtos.png" />
+                            <div className="bg-black absolute w-full h-full top-0 left-0 bg-opacity-70"></div>
+                            <span className="absolute text-white text-7xl font-black z-10">+</span>
+                        </div>
+                        <button onClick={() => setAddMixModalOpen(true)} className="h-[34px] px-2.5 py-[5px] bg-blue-500 rounded-lg justify-center items-center gap-2.5 inline-flex">
+                            <span className="text-white text-xs font-black">+</span>
+                            <span className="text-white text-xs font-normal"> Adicionar novo mix</span>
+                        </button>
+                    </div>
                 </div>
 
                 <div className="flex flex-wrap md:gap-6 gap-14 justify-end">
@@ -104,6 +119,11 @@ export default function Page() {
             <AddProductModal
                 isOpen={isAddModalOpen}
                 onClose={() => setAddModalOpen(false)}
+            />
+
+            <AddMixModal
+                isOpen={isAddMixModalOpen}
+                onClose={() => setAddMixModalOpen(false)}
             />
 
             <EditProductModal

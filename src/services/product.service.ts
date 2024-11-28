@@ -72,6 +72,54 @@ class ProductService {
             return { error: true, message: error.message };
         }
     }
+
+
+
+    async registerMix(data: any): Promise<IActionResponse> {
+        try {
+            console.log('here 80')
+            const result = await apiService.postFormData(EndpointEnum.MIX, data, true);
+            return { error: false, data: result };
+        } catch (error) {
+            return { error: true, message: error.message };
+        }
+    }
+
+    async getAllMix(): Promise<IActionResponse> {
+        try {
+            const result = await apiService.get(EndpointEnum.MIX);
+            return { error: false, data: result };
+        } catch (error) {
+            return { error: true, message: error.message };
+        }
+    }
+
+    async getByIdMix(id: string): Promise<IActionResponse> {
+        try {
+            const result = await apiService.get(EndpointEnum.MIX + id);
+            return { error: false, data: result };
+        } catch (error) {
+            return { error: true, message: error.message };
+        }
+    }
+
+    async updateMix(data: any, id: string): Promise<IActionResponse> {
+        try {
+            const result = await apiService.putFormData(EndpointEnum.MIX + id, data, true);
+            return { error: false, data: result };
+        } catch (error) {
+            return { error: true, message: error.message };
+        }
+    }
+
+    async deleteMix(id: string): Promise<IActionResponse> {
+        try {
+            const result = await apiService.delete(EndpointEnum.MIX + id, true);
+            return { error: false, data: result };
+        } catch (error) {
+            return { error: true, message: error.message };
+        }
+    }
 }
 
 const productService = new ProductService()

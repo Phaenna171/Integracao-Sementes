@@ -10,4 +10,6 @@ export enum EndpointEnum {
     PRODUCTS = "products/",
 
     CATEGORY = "products/category/",
+    MIX = "products/mix/",
+    MAIL = "mail/",
 }
