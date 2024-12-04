@@ -59,7 +59,7 @@ export default function Individual() {
             <div className='relative flex justify-center pb-6 lg:pb-0 lg:justify-between'>
               <h1 className="text-center font-effra text-3xl md:text-4xl text-[#2C674B] pb-8 md:pb-0">
                 {/* {products.filter(el => el.line == selectedLinha && el.category == selectedCategoria)[selectedSemente]?.title} */}
-                Linha Quali
+                {selectedLinha}
               </h1>
               <Link href="/products" onClick={() => { setSelectedLinha("") }} className='hidden lg:block'>
                 <div className='flex gap-x-2 items-center'>

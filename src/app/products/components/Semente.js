@@ -72,10 +72,11 @@ export default function Semente() {
             {products.filter(el => el.line == selectedLinha && el.category == selectedCategoria)[selectedSemente]?.table.map((info, index) => (
               <div
                 key={index}
-                className={`py-1 px-8 ${index % 2 !== 0 ? 'bg-[#ACD3B8]' : 'bg-[#EAFCF0]'
+                className={`flex justify-between py-1 px-8 ${index % 2 !== 0 ? 'bg-[#ACD3B8]' : 'bg-[#EAFCF0]'
                   }`}
               >
-                <p className="font-effra text-[#2D2F2E]">{info.key}</p>
+                <p className="font-effra text-[#2D2F2E] w-72">{info.key}</p>
+                <p className="font-effra text-[#2D2F2E] w-32">{info.value}</p>
 
               </div>
             ))}

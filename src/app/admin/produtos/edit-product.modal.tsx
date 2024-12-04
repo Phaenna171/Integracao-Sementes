@@ -4,30 +4,30 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 
 export default function EditProductModal({ isOpen, onClose, product }) {
-  const [table, setTable] = useState([{ key: "" }]);
+  const [table, setTable] = useState([{ key: "", value: "" }]);
   const [images, setImages] = useState<{ name: string, src: string, file?: File }[]>([{ name: "", src: "" }]);
   const [showSpinner, setShowSpinner] = useState(false);
   const [Categories, setCategories] = useState([]);
 
-  // const [uses, setUses] = useState([
-  //   { id: 1, label: "Áreas Verdes", src: "/imgs/admin-products/icone_areas_verdes.png", selected: false },
-  //   { id: 2, label: "Ensilagem", src: "/imgs/admin-products/icone_ensilagem.png", selected: false },
-  //   { id: 3, label: "Fenação", src: "/imgs/admin-products/icone_fenacao.png", selected: false },
-  //   { id: 4, label: "Margens de Rodovias", src: "/imgs/admin-products/icone_margens_de_rodovias.png", selected: false },
-  //   { id: 5, label: "Palhada", src: "/imgs/admin-products/icone_palhada.png", selected: false },
-  //   { id: 6, label: "Pastoreio", src: "/imgs/admin-products/icone_pastoreio.png", selected: false },
-  //   { id: 7, label: "Piquetes", src: "/imgs/admin-products/icone_piquetes.png", selected: false },
-  //   { id: 8, label: "Pista de Pouso", src: "/imgs/admin-products/icone_pista_de_pouso.png", selected: false },
-  //   { id: 9, label: "Taludes", src: "/imgs/admin-products/icone_talaudes.png", selected: false },
-  // ]);
+  const [uses, setUses] = useState([
+    { id: 1, label: "Áreas Verdes", src: "/imgs/admin-products/icone_areas_verdes.png", selected: false },
+    { id: 2, label: "Ensilagem", src: "/imgs/admin-products/icone_ensilagem.png", selected: false },
+    { id: 3, label: "Fenação", src: "/imgs/admin-products/icone_fenacao.png", selected: false },
+    { id: 4, label: "Margens de Rodovias", src: "/imgs/admin-products/icone_margens_de_rodovias.png", selected: false },
+    { id: 5, label: "Palhada", src: "/imgs/admin-products/icone_palhada.png", selected: false },
+    { id: 6, label: "Pastoreio", src: "/imgs/admin-products/icone_pastoreio.png", selected: false },
+    { id: 7, label: "Piquetes", src: "/imgs/admin-products/icone_piquetes.png", selected: false },
+    { id: 8, label: "Pista de Pouso", src: "/imgs/admin-products/icone_pista_de_pouso.png", selected: false },
+    { id: 9, label: "Taludes", src: "/imgs/admin-products/icone_talaudes.png", selected: false },
+  ]);
 
-  // // State for "indications" with an additional "selected" attribute
-  // const [indications, setIndications] = useState([
-  //   { id: 1, label: "Gado de Corte", src: "/imgs/admin-products/icone_gado_de_corte.png", selected: false },
-  //   { id: 2, label: "Gado de Leite", src: "/imgs/admin-products/icone_gado_de_leite.png", selected: false },
-  //   { id: 3, label: "Ovinos e Caprinos", src: "/imgs/admin-products/icone_ovino_e_caprinos.png", selected: false },
-  //   { id: 4, label: "Equinos", src: "/imgs/admin-products/icone_equinos.png", selected: false },
-  // ]);
+  // State for "indications" with an additional "selected" attribute
+  const [indications, setIndications] = useState([
+    { id: 1, label: "Gado de Corte", src: "/imgs/admin-products/icone_gado_de_corte.png", selected: false },
+    { id: 2, label: "Gado de Leite", src: "/imgs/admin-products/icone_gado_de_leite.png", selected: false },
+    { id: 3, label: "Ovinos e Caprinos", src: "/imgs/admin-products/icone_ovino_e_caprinos.png", selected: false },
+    { id: 4, label: "Equinos", src: "/imgs/admin-products/icone_equinos.png", selected: false },
+  ]);
 
   const [title, setTitle] = useState("");
   const [subtitle, setSubtitle] = useState("");
@@ -36,26 +36,26 @@ export default function EditProductModal({ isOpen, onClose, product }) {
   const [description, setDescription] = useState("");
   const [tableTitle, setTableTitle] = useState("");
 
-  // // Function to handle clicking a "use" item (toggle selected state)
-  // const toggleUseSelection = (id) => {
-  //   setUses((prevUses) =>
-  //     prevUses.map((use) =>
-  //       use.id === id ? { ...use, selected: !use.selected } : use
-  //     )
-  //   );
-  // };
+  // Function to handle clicking a "use" item (toggle selected state)
+  const toggleUseSelection = (id) => {
+    setUses((prevUses) =>
+      prevUses.map((use) =>
+        use.id === id ? { ...use, selected: !use.selected } : use
+      )
+    );
+  };
 
-  // // Function to handle clicking an "indication" item (toggle selected state)
-  // const toggleIndicationSelection = (id) => {
-  //   setIndications((prevIndications) =>
-  //     prevIndications.map((indication) =>
-  //       indication.id === id ? { ...indication, selected: !indication.selected } : indication
-  //     )
-  //   );
-  // };
+  // Function to handle clicking an "indication" item (toggle selected state)
+  const toggleIndicationSelection = (id) => {
+    setIndications((prevIndications) =>
+      prevIndications.map((indication) =>
+        indication.id === id ? { ...indication, selected: !indication.selected } : indication
+      )
+    );
+  };
 
   const handleAddTableItem = () => {
-    setTable([...table, { key: "" }]);
+    setTable([...table, { key: "", value: "" }]);
   };
 
   const handleRemoveTableItem = (index) => {
@@ -93,8 +93,8 @@ export default function EditProductModal({ isOpen, onClose, product }) {
     e.preventDefault();
 
     if (images.length == 0 || (images.length == 1 && images.find(el => !el.name))) return alert('Insira uma foto ao carrossel');
-    // if (uses.filter(el => el.selected).length == 0) return alert('Selecione ao menos uma utilização')
-    // if (indications.filter(el => el.selected).length == 0) return alert('Selecione ao menos uma indicação')
+    if (uses.filter(el => el.selected).length == 0) return alert('Selecione ao menos uma utilização')
+    if (indications.filter(el => el.selected).length == 0) return alert('Selecione ao menos uma indicação')
 
     const formData = new FormData();
 
@@ -112,8 +112,8 @@ export default function EditProductModal({ isOpen, onClose, product }) {
       else formData.append(`oldPhotos`, image.src)
     });
 
-    // formData.append('use', JSON.stringify(uses.filter(use => use.selected).map(el => el.label)));
-    // formData.append('indication', JSON.stringify(indications.filter(indication => indication.selected).map(el => el.label)));
+    formData.append('use', JSON.stringify(uses.filter(use => use.selected).map(el => el.label)));
+    formData.append('indication', JSON.stringify(indications.filter(indication => indication.selected).map(el => el.label)));
     setShowSpinner(true)
     const result = await productService.update(formData, product.id);
     if (result.error) alert(result.message);
@@ -131,15 +131,15 @@ export default function EditProductModal({ isOpen, onClose, product }) {
     }
     getCategories()
     if (product) {
-      // const updatedUses = uses.map(el => {
-      //   if (product.use.find(productUse => productUse == el.label)) return { ...el, selected: true }
-      //   return el
-      // })
+      const updatedUses = uses.map(el => {
+        if (product.use.find(productUse => productUse == el.label)) return { ...el, selected: true }
+        return el
+      })
 
-      // const updatedIndications = indications.map(el => {
-      //   if (product.indication.find(productIndication => productIndication == el.label)) return { ...el, selected: true }
-      //   return el
-      // })
+      const updatedIndications = indications.map(el => {
+        if (product.indication.find(productIndication => productIndication == el.label)) return { ...el, selected: true }
+        return el
+      })
 
       setTitle(product.title || "");
       setSubtitle(product.subtitle || "");
@@ -147,8 +147,8 @@ export default function EditProductModal({ isOpen, onClose, product }) {
       setLine(product.line || "");
       setDescription(product.description || "");
       setTableTitle(product.tableTitle || "");
-      // setIndications(updatedIndications)
-      // setUses(updatedUses)
+      setIndications(updatedIndications)
+      setUses(updatedUses)
       setTable(product.table)
       product.carouselPhotos && setImages(product.carouselPhotos?.map((el, index) => ({ name: `Produto ${++index}`, src: el })))
     }
@@ -177,7 +177,7 @@ export default function EditProductModal({ isOpen, onClose, product }) {
         />
 
         {/* Short Description */}
-        <label className="block mb-2">Descrição curta:</label>
+        <label className="block mb-2">Nome científico:</label>
         <input name="subtitle" value={subtitle} onChange={e => setSubtitle(e.target.value)}
           required type="text" className="w-full mb-4 p-2 border border-green-600 rounded" placeholder="Aqui vai ficar todo o texto auxiliar."
         />
@@ -240,6 +240,56 @@ export default function EditProductModal({ isOpen, onClose, product }) {
           placeholder="Escreva aqui a descrição completa do produto."
         ></textarea>
 
+                {/* Use and indication */}
+                <div className="flex justify-between md:flex-nowrap flex-wrap mb-6 gap-4">
+          <div className="flex flex-col gap-4 w-1/2">
+            <label className="block mb-2">Utilização:</label>
+            <div className="flex flex-wrap gap-4">
+              {uses.map((use) => (
+                <div
+                  key={use.id}
+                  className={`flex flex-col gap-2 items-center flex-grow cursor-pointer border-2 ${use.selected ? "border-green-600" : "border-transparent"
+                    }`}
+                  onClick={() => toggleUseSelection(use.id)}
+                >
+                  <Image
+                    unoptimized
+                    className="object-contain w-[85px] h-[56px]"
+                    alt={use.label}
+                    width={85}
+                    height={56}
+                    src={use.src}
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Indications Section */}
+          <div className="flex flex-col gap-4 w-1/2">
+            <label className="block mb-2">Indicação:</label>
+            <div className="flex flex-wrap gap-4">
+              {indications.map((indication) => (
+                <div
+                  key={indication.id}
+                  className={`flex flex-col gap-2 cursor-pointer border-2 ${indication.selected ? "border-green-600" : "border-transparent"
+                    }`}
+                  onClick={() => toggleIndicationSelection(indication.id)}
+                >
+                  <Image
+                    unoptimized
+                    className="object-contain w-[85px] h-[56px]"
+                    alt={indication.label}
+                    width={85}
+                    height={56}
+                    src={indication.src}
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
         {/* Table Items */}
         <label className="block mb-2">Título da tabela:</label>
         <input
@@ -254,11 +304,11 @@ export default function EditProductModal({ isOpen, onClose, product }) {
               value={item.key}
               onChange={(e) => setTable(table.map((ti, i) => i === index ? { ...ti, key: e.target.value } : ti))}
             />
-            {/* <input
+            <input
               required type="text" placeholder="Descrição" className="w-1/2 p-2 border border-green-600 rounded"
               value={item.value}
               onChange={(e) => setTable(table.map((ti, i) => i === index ? { ...ti, value: e.target.value } : ti))}
-            /> */}
+            />
             <button type="button" onClick={() => handleRemoveTableItem(index)} className="text-red-600">Remover</button>
           </div>
         ))}
