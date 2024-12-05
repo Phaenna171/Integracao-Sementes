@@ -9,6 +9,20 @@ export default function EditProductModal({ isOpen, onClose, product }) {
   const [showSpinner, setShowSpinner] = useState(false);
   const [Categories, setCategories] = useState([]);
 
+  const [lines, setLines] = useState([
+    { id: 1, label: "Linha Quali", selected: false },
+    { id: 2, label: "Linha Pro", selected: false },
+    { id: 3, label: "Linha Total Quali", selected: false },
+    { id: 4, label: "Mix", selected: false },
+  ]);
+  const toggleLineSelection = (id) => {
+    setLines((prevLines) =>
+      prevLines.map((line) =>
+        line.id === id ? { ...line, selected: !line.selected } : line
+      )
+    );
+  };
+
   const [uses, setUses] = useState([
     { id: 1, label: "Áreas Verdes", src: "/imgs/admin-products/icone_areas_verdes.png", selected: false },
     { id: 2, label: "Ensilagem", src: "/imgs/admin-products/icone_ensilagem.png", selected: false },
@@ -96,12 +110,15 @@ export default function EditProductModal({ isOpen, onClose, product }) {
     if (uses.filter(el => el.selected).length == 0) return alert('Selecione ao menos uma utilização')
     if (indications.filter(el => el.selected).length == 0) return alert('Selecione ao menos uma indicação')
 
+    const selectedLines = lines.filter((line) => line.selected).map((line) => line.label);
+    if (selectedLines.length === 0) return alert("Selecione ao menos uma linha");
+
     const formData = new FormData();
 
     formData.append('title', e.currentTarget.title.value);
     formData.append('subtitle', e.currentTarget.subtitle.value);
     formData.append('category', e.currentTarget.category.value);
-    formData.append('line', e.currentTarget.line.value);
+    formData.append("line", JSON.stringify(selectedLines));
     formData.append('description', e.currentTarget.description.value);
     formData.append('tableTitle', e.currentTarget.tableTitle.value);
 
@@ -144,8 +161,12 @@ export default function EditProductModal({ isOpen, onClose, product }) {
       setTitle(product.title || "");
       setSubtitle(product.subtitle || "");
       setCategory(product.category || "");
-      setLine(product.line || "");
-      setDescription(product.description || "");
+      const updatedLines = lines.map((line) =>
+        product.line?.includes(line.label) ? { ...line, selected: true } : line
+      );
+
+      setLines(updatedLines);
+       setDescription(product.description || "");
       setTableTitle(product.tableTitle || "");
       setIndications(updatedIndications)
       setUses(updatedUses)
@@ -182,23 +203,15 @@ export default function EditProductModal({ isOpen, onClose, product }) {
           required type="text" className="w-full mb-4 p-2 border border-green-600 rounded" placeholder="Aqui vai ficar todo o texto auxiliar."
         />
 
-        {/* Linha de produtos */}
-        <label className="block mb-2">Linha:</label>
-        <select
-          value={line}
-          onChange={e => setLine(e.target.value)}
-          name="line"
-          required
-          className="w-full mb-4 p-2 border border-green-600 rounded"
-        >
-          <option value="" disabled selected hidden>
-            Selecione uma linha
-          </option>
-          <option selected value="Linha Quali">Linha Quali</option>
-          <option value="Linha Pro">Linha Pro</option>
-          <option value="Linha Total Quali">Linha Total Quali</option>
-          <option value="Mix">Mix</option>
-        </select>
+        <label className="block mb-2">Linhas:</label>
+        <div className="flex gap-4 mb-4">
+          {lines.map((line) => (
+            <label key={line.id} className="flex items-center gap-2">
+              <input type="checkbox" checked={line.selected} onChange={() => toggleLineSelection(line.id)} />
+              {line.label}
+            </label>
+          ))}
+        </div>
 
         {/* Short Description */}
         <label className="block mb-2">Categoria:</label>
@@ -240,8 +253,8 @@ export default function EditProductModal({ isOpen, onClose, product }) {
           placeholder="Escreva aqui a descrição completa do produto."
         ></textarea>
 
-                {/* Use and indication */}
-                <div className="flex justify-between md:flex-nowrap flex-wrap mb-6 gap-4">
+        {/* Use and indication */}
+        <div className="flex justify-between md:flex-nowrap flex-wrap mb-6 gap-4">
           <div className="flex flex-col gap-4 w-1/2">
             <label className="block mb-2">Utilização:</label>
             <div className="flex flex-wrap gap-4">

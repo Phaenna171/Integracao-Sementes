@@ -98,10 +98,18 @@ export default function AddProductModal({ isOpen, onClose }) {
 
     const formData = new FormData();
 
+    // Capturando os valores selecionados dos checkboxes
+    const selectedLines = Array.from(e.currentTarget.querySelectorAll('input[name="lines"]:checked')).map(
+      // @ts-ignore
+      (checkbox) => checkbox.value
+    );
+
+    // Adicionando as linhas selecionadas ao formData
+    formData.append('line', JSON.stringify(selectedLines));
+      
     formData.append('title', e.currentTarget.title.value);
     formData.append('subtitle', e.currentTarget.subtitle.value);
     formData.append('category', e.currentTarget.category.value);
-    formData.append('line', e.currentTarget.line.value);
     formData.append('description', e.currentTarget.description.value);
     formData.append('tableTitle', e.currentTarget.tableTitle.value);
 
@@ -152,20 +160,52 @@ export default function AddProductModal({ isOpen, onClose }) {
         />
 
         {/* Linha de produtos */}
-        <label className="block mb-2">Linha:</label>
-        <select
-          name="line"
-          required
-          className="w-full mb-4 p-2 border border-green-600 rounded"
-        >
-          <option value="" disabled selected hidden>
-            Selecione uma linha
-          </option>
-          <option selected value="Linha Quali">Linha Quali</option>
-          <option value="Linha Pro">Linha Pro</option>
-          <option value="Linha Total Quali">Linha Total Quali</option>
-          <option value="Mix">Mix</option>
-        </select>
+        <label className="block mb-2">Linhas:</label>
+        <div className="mb-4">
+          <label className="inline-flex items-center">
+            <input
+              type="checkbox"
+              name="lines"
+              value="Linha Quali"
+              className="mr-2"
+            />
+            Linha Quali
+          </label>
+        </div>
+        <div className="mb-4">
+          <label className="inline-flex items-center">
+            <input
+              type="checkbox"
+              name="lines"
+              value="Linha Pro"
+              className="mr-2"
+            />
+            Linha Pro
+          </label>
+        </div>
+        <div className="mb-4">
+          <label className="inline-flex items-center">
+            <input
+              type="checkbox"
+              name="lines"
+              value="Linha Total Quali"
+              className="mr-2"
+            />
+            Linha Total Quali
+          </label>
+        </div>
+        <div className="mb-4">
+          <label className="inline-flex items-center">
+            <input
+              type="checkbox"
+              name="lines"
+              value="Mix"
+              className="mr-2"
+            />
+            Mix
+          </label>
+        </div>
+
         {/* Short Description */}
         <label className="block mb-2">Categoria:</label>
         <select

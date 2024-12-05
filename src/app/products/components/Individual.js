@@ -58,7 +58,6 @@ export default function Individual() {
           <div className='w-full flex flex-col gap-y-4'>
             <div className='relative flex justify-center pb-6 lg:pb-0 lg:justify-between'>
               <h1 className="text-center font-effra text-3xl md:text-4xl text-[#2C674B] pb-8 md:pb-0">
-                {/* {products.filter(el => el.line == selectedLinha && el.category == selectedCategoria)[selectedSemente]?.title} */}
                 {selectedLinha}
               </h1>
               <Link href="/products" onClick={() => { setSelectedLinha("") }} className='hidden lg:block'>
@@ -97,7 +96,7 @@ export default function Individual() {
         </div>
 
         <div className="my-8 md:my-16  grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 overflow-hidden max-h-[40vh] md:max-h-[100vh] overflow-y-auto table-scroll">
-          {products.filter(el => el.line == selectedLinha && el.category == selectedCategoria).map((product, index) => (
+          {products.filter(el => el.line.includes(selectedLinha) && el.category == selectedCategoria).map((product, index) => (
             <div
               key={index}
               className="relative w-full h-[180px] sm:h-[200px] md:h-[250px] lg:h-[300px] cursor-pointer"

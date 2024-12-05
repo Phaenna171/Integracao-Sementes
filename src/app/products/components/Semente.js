@@ -38,7 +38,7 @@ export default function Semente() {
       <div className='pb-6 md:pb-16'>
         <div className="relative grid grid-rows-3 bg-contain bg-center px-16 xl:px-56 h-[20vh] md:h-[35vh] lg:h-[50vh] xl:h-[75vh] bg-no-repeat bg-cover"
           style={{
-            backgroundImage: `url(${products.filter(el => el.line == selectedLinha && el.category == selectedCategoria)[selectedSemente]?.carouselPhotos[0]})`
+            backgroundImage: `url(${products.filter(el => el.line.includes(selectedLinha) && el.category == selectedCategoria)[selectedSemente]?.carouselPhotos[0]})`
           }}
         >
           <div className='absolute right-5 top-3 md:right-24 md:top-6 lg:right-40 lg:-bottom-28 xl:right-40 xl:top-40 flex flex-col items-end'>
@@ -60,16 +60,16 @@ export default function Semente() {
         <div className='lg:px-40 xl:px-60 md:px-20 px-4 pt-12 md:pt-28'>
           <div className='pb-8 md:pb-16'>
             <p className=" md:text-start font-openSans font-semibold text-xl text-[#354D4D]">{selectedCategoria}</p>
-            <h1 className="font-effra text-3xl  md:text-start md:text-4xl lg:text-5xl text-[#136736] leading-8">{products.filter(el => el.line == selectedLinha && el.category == selectedCategoria)[selectedSemente]?.title}</h1>
-            <p className=" md:text-start font-openSans text-sm text-[#354D4D]">{products.filter(el => el.line == selectedLinha && el.category == selectedCategoria)[selectedSemente]?.subtitle}</p>
+            <h1 className="font-effra text-3xl  md:text-start md:text-4xl lg:text-5xl text-[#136736] leading-8">{products.filter(el => el.line.includes(selectedLinha) && el.category == selectedCategoria)[selectedSemente]?.title}</h1>
+            <p className=" md:text-start font-openSans text-sm text-[#354D4D]">{products.filter(el => el.line.includes(selectedLinha) && el.category == selectedCategoria)[selectedSemente]?.subtitle}</p>
           </div>
-          <p className="text-[#354D4D] font-openSans text-sm md:text-lg md:font-medium tracking-wider leading-6 md:leading-9 pb-16">{products.filter(el => el.line == selectedLinha && el.category == selectedCategoria)[selectedSemente]?.description}</p>
+          <p className="text-[#354D4D] font-openSans text-sm md:text-lg md:font-medium tracking-wider leading-6 md:leading-9 pb-16">{products.filter(el => el.line.includes(selectedLinha) && el.category == selectedCategoria)[selectedSemente]?.description}</p>
         </div>
 
         <div className="px-4 md:px-40 lg:px-80 xl:px-[500px] pb-16">
-          <p className="bg-[#4C9162] text-white font-effra py-1 pl-8">{products.filter(el => el.line == selectedLinha && el.category == selectedCategoria)[selectedSemente]?.tableTitle}</p>
+          <p className="bg-[#4C9162] text-white font-effra py-1 pl-8">{products.filter(el => el.line.includes(selectedLinha) && el.category == selectedCategoria)[selectedSemente]?.tableTitle}</p>
           <div className="relative max-h-64 overflow-y-auto table-scroll">
-            {products.filter(el => el.line == selectedLinha && el.category == selectedCategoria)[selectedSemente]?.table.map((info, index) => (
+            {products.filter(el => el.line.includes(selectedLinha) && el.category == selectedCategoria)[selectedSemente]?.table.map((info, index) => (
               <div
                 key={index}
                 className={`flex justify-between py-1 px-8 ${index % 2 !== 0 ? 'bg-[#ACD3B8]' : 'bg-[#EAFCF0]'
