@@ -2,12 +2,14 @@ import Spinner from "@/components/spinner";
 import productService from "@/services/product.service";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+const ReactQuill = typeof window === 'object' ? require('react-quill') : () => false;
 
 export default function AddProductModal({ isOpen, onClose }) {
   const [table, setTable] = useState([{ key: "", value: "" }]);
   const [images, setImages] = useState<{ name: string, src: string, file?: File }[]>([{ name: "", src: "" }]);
   const [showSpinner, setShowSpinner] = useState(false);
   const [Categories, setCategories] = useState([]);
+  const [description, setDescription] = useState("");
 
   useEffect(() => {
     async function getCategories() {
@@ -95,6 +97,7 @@ export default function AddProductModal({ isOpen, onClose }) {
     if (images.length == 0 || (images.length == 1 && !images[0].name)) return alert('Insira uma foto ao carrossel');
     if (uses.filter(el => el.selected).length == 0) return alert('Selecione ao menos uma utilização')
     if (indications.filter(el => el.selected).length == 0) return alert('Selecione ao menos uma indicação')
+      if (!description) return alert("Insira uma descrição");
 
     const formData = new FormData();
 
@@ -110,7 +113,7 @@ export default function AddProductModal({ isOpen, onClose }) {
     formData.append('title', e.currentTarget.title.value);
     formData.append('subtitle', e.currentTarget.subtitle.value);
     formData.append('category', e.currentTarget.category.value);
-    formData.append('description', e.currentTarget.description.value);
+    formData.append('description', description);
     formData.append('tableTitle', e.currentTarget.tableTitle.value);
 
     formData.append('table', JSON.stringify(table));
@@ -237,14 +240,10 @@ export default function AddProductModal({ isOpen, onClose }) {
 
         {/* Long Description */}
         <label className="block mb-2">Descrição Completa:</label>
-        <textarea
-          name="description" required
-          className="w-full mb-4 p-2 border border-green-600 rounded h-24"
-          placeholder="Escreva aqui a descrição completa do produto."
-        ></textarea>
+        <ReactQuill className="text-black" theme="snow" value={description} onChange={(value) => setDescription(value)} />
 
         {/* Use and indication */}
-        <div className="flex justify-between md:flex-nowrap flex-wrap mb-6 gap-4">
+        <div className="flex justify-between md:flex-nowrap flex-wrap mb-6 gap-4 mt-6">
           <div className="flex flex-col gap-4 w-1/2">
             <label className="block mb-2">Utilização:</label>
             <div className="flex flex-wrap gap-4">

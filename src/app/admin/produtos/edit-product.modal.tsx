@@ -2,6 +2,7 @@ import Spinner from "@/components/spinner";
 import productService from "@/services/product.service";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+const ReactQuill = typeof window === 'object' ? require('react-quill') : () => false;
 
 export default function EditProductModal({ isOpen, onClose, product }) {
   const [table, setTable] = useState([{ key: "", value: "" }]);
@@ -112,6 +113,7 @@ export default function EditProductModal({ isOpen, onClose, product }) {
 
     const selectedLines = lines.filter((line) => line.selected).map((line) => line.label);
     if (selectedLines.length === 0) return alert("Selecione ao menos uma linha");
+    if (!description) return alert("Insira uma descrição");
 
     const formData = new FormData();
 
@@ -119,7 +121,7 @@ export default function EditProductModal({ isOpen, onClose, product }) {
     formData.append('subtitle', e.currentTarget.subtitle.value);
     formData.append('category', e.currentTarget.category.value);
     formData.append("line", JSON.stringify(selectedLines));
-    formData.append('description', e.currentTarget.description.value);
+    formData.append('description', description);
     formData.append('tableTitle', e.currentTarget.tableTitle.value);
 
     formData.append('table', JSON.stringify(table));
@@ -149,12 +151,12 @@ export default function EditProductModal({ isOpen, onClose, product }) {
     getCategories()
     if (product) {
       const updatedUses = uses.map(el => {
-        if (product.use.find(productUse => productUse == el.label)) return { ...el, selected: true }
+        if (product?.use?.find(productUse => productUse == el.label)) return { ...el, selected: true }
         return el
       })
 
       const updatedIndications = indications.map(el => {
-        if (product.indication.find(productIndication => productIndication == el.label)) return { ...el, selected: true }
+        if (product?.indication?.find(productIndication => productIndication == el.label)) return { ...el, selected: true }
         return el
       })
 
@@ -166,7 +168,7 @@ export default function EditProductModal({ isOpen, onClose, product }) {
       );
 
       setLines(updatedLines);
-       setDescription(product.description || "");
+      setDescription(product.description || "");
       setTableTitle(product.tableTitle || "");
       setIndications(updatedIndications)
       setUses(updatedUses)
@@ -246,15 +248,10 @@ export default function EditProductModal({ isOpen, onClose, product }) {
 
         {/* Long Description */}
         <label className="block mb-2">Descrição Completa:</label>
-        <textarea
-          value={description} onChange={e => setDescription(e.target.value)}
-          name="description" required
-          className="w-full mb-4 p-2 border border-green-600 rounded h-24"
-          placeholder="Escreva aqui a descrição completa do produto."
-        ></textarea>
+        <ReactQuill className="text-black" theme="snow" value={description} onChange={(value) => setDescription(value)} />
 
         {/* Use and indication */}
-        <div className="flex justify-between md:flex-nowrap flex-wrap mb-6 gap-4">
+        <div className="flex justify-between md:flex-nowrap flex-wrap mb-6 gap-4 mt-6">
           <div className="flex flex-col gap-4 w-1/2">
             <label className="block mb-2">Utilização:</label>
             <div className="flex flex-wrap gap-4">

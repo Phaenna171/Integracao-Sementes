@@ -94,7 +94,7 @@ export default function Individual() {
             </div>
           </div>
         </div>
-
+        {products.filter(el => el.line.includes(selectedLinha) && el.category == selectedCategoria).length == 0 && <p className='text-red-500 text-end'>Nenhum produto nesta categoria</p>}
         <div className="my-8 md:my-16  grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 overflow-hidden max-h-[40vh] md:max-h-[100vh] overflow-y-auto table-scroll">
           {products.filter(el => el.line.includes(selectedLinha) && el.category == selectedCategoria).map((product, index) => (
             <div

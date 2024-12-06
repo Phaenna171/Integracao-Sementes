@@ -30,12 +30,12 @@ export default function Controle() {
             objectFit="cover"
             className="w-full h-auto max-w-[500px] md:max-w-full"
           />
-          <Image
+          {/* <Image
             src="/imgs/integracao/360.png"
             width={50}
             height={50}
             className="absolute bottom-8 left-8 md:bottom-48 md:left-24 "
-          />
+          /> */}
         </div>
       </div>
     </>

@@ -11,13 +11,13 @@ import { ProductContext } from '../context/ProductContext';
 
 export default function MainMix() {
   console.log('here')
-  const { selectedCategoria, setSelectedCategoria, selectedSemente,selectedMix,setSelectedMix } = useContext(ProductContext)
+  const { selectedCategoria, setSelectedCategoria, selectedSemente, selectedMix, setSelectedMix } = useContext(ProductContext)
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
     async function getData() {
       const { data } = await productService.getAllMix()
-      console.log('\n\n',data,selectedMix)
+      console.log('\n\n', data, selectedMix)
       setProducts(data)
     }
     getData()
@@ -60,7 +60,7 @@ export default function MainMix() {
                   </div>
                 </Link>
               </div>
-              <div className='flex justify-between border-b-2 border-[#CFD5D0]'>
+              {/* <div className='flex justify-between border-b-2 border-[#CFD5D0]'>
                 <h1 className={`text-center font-openSans  text-lg md:text-lg cursor-pointer px-2 ${selectedCategoria === 'gramineas' ? "text-[#2B654C] bg-[#E3EBD6]" : "text-[#C9C9C9]"}`}
                   onClick={() => { setSelectedCategoria('gramineas') }}
                 >Gramíneas</h1>
@@ -79,10 +79,10 @@ export default function MainMix() {
                 <h1 className={`text-center font-openSans  text-lg md:text-lg cursor-pointer px-2 ${selectedCategoria === 'cobertura' ? "text-[#2B654C] bg-[#E3EBD6]" : "text-[#C9C9C9]"}`}
                   onClick={() => { setSelectedCategoria('cobertura') }}
                 >Sementes de cobertura</h1>
-              </div>
+              </div> */}
             </div>
           </div>
-
+          {products.length == 0 && <p className='text-red-500 text-end'>Nenhum produto nesta categoria</p>}
           <div className=" px-8 md:px-20 py-16">
             <div className="grid grid-cols-4 gap-x-8 md:gap-x-0">
               {products?.map((mix, index) => (

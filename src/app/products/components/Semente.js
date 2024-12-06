@@ -63,7 +63,7 @@ export default function Semente() {
             <h1 className="font-effra text-3xl  md:text-start md:text-4xl lg:text-5xl text-[#136736] leading-8">{products.filter(el => el.line.includes(selectedLinha) && el.category == selectedCategoria)[selectedSemente]?.title}</h1>
             <p className=" md:text-start font-openSans text-sm text-[#354D4D]">{products.filter(el => el.line.includes(selectedLinha) && el.category == selectedCategoria)[selectedSemente]?.subtitle}</p>
           </div>
-          <p className="text-[#354D4D] font-openSans text-sm md:text-lg md:font-medium tracking-wider leading-6 md:leading-9 pb-16">{products.filter(el => el.line.includes(selectedLinha) && el.category == selectedCategoria)[selectedSemente]?.description}</p>
+          <div dangerouslySetInnerHTML={{__html: products.filter(el => el.line.includes(selectedLinha) && el.category == selectedCategoria)[selectedSemente]?.description}} className="text-[#354D4D] font-openSans text-sm md:text-lg md:font-medium tracking-wider leading-6 md:leading-9 pb-16" />
         </div>
 
         <div className="px-4 md:px-40 lg:px-80 xl:px-[500px] pb-16">
