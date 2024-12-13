@@ -4,7 +4,7 @@ export const metadata = {
   title: "Integração Sementes",
   description: "Semeando qualidade, colhendo confiança!",
   icons: {
-    icon: "/logo.png", // O caminho relativo para o seu ícone
+    icon: "/favicon.png", 
   },
 };
 
