@@ -51,4 +51,3 @@ Para qualquer dúvida ou sugestão, entre em contato com:
 
 Pedro Victor Lima - www.linkedin.com/in/pedro-victor-lima-dev-jr
 
-a
