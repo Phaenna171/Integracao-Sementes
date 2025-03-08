@@ -25,7 +25,7 @@ export default function FormReclamacao() {
   const handleSubmit = async () => {
     try {
       const response = await mailService.register(formData)
-  
+
       if (!response.error) {
         alert('Formulário enviado com sucesso!');
         setFormData({}); // Limpar o formulário
@@ -48,11 +48,11 @@ export default function FormReclamacao() {
       <Header footerRef={footerRef} />
       <div className=' py-16 px-4 xl:px-40'>
         <h1 className=' font-effra text-2xl md:text-4xl text-[#2C674B] pb-8 text-center md:text-start'>Ficha Técnica de Reclamação - FTR</h1>
-        {/* {etapa === 1 && <Etapa1 onChange={handleChange} data={formData} />}
+        {etapa === 1 && <Etapa1 onChange={handleChange} data={formData} />}
         {etapa === 2 && <Etapa2 onChange={handleChange} data={formData} />}
         {etapa === 3 && <Etapa3 onChange={handleChange} data={formData} />}
         {etapa === 4 && <Etapa4 onChange={handleChange} data={formData} />}
-        {etapa === 5 && <Etapa5 onChange={handleChange} data={formData} />} */}
+        {etapa === 5 && <Etapa5 onChange={handleChange} data={formData} />}
         {etapa === 6 && <Etapa6 onChange={handleChange} data={formData} />}
         <div className='flex justify-center gap-x-8'>
 
@@ -72,7 +72,7 @@ export default function FormReclamacao() {
             </svg>
           </button>}
 
-          
+
           {etapa === 6 && <button className='font-effra text-xl md:text-xl text-[#2C674B] pt-8 flex gap-x-2 items-center' onClick={() => handleSubmit()}>Enviar</button>}
         </div>
       </div>
