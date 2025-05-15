@@ -28,7 +28,7 @@ export default function Etapa4({ onChange, data }) {
           <div className='col-span-4'>
             <label className='font-openSans text-sm '>
               Condições de armazenamento das sementes na propriedade:
-              <textarea className='py-1 rounded-xl h-[90px] border-2 border-[#E3EBD6] px-3 w-full' type="number" name="sequenciaOperacoes" value={data.sequenciaOperacoes || ''} onChange={handleInputChange} />
+              <textarea className='py-1 rounded-xl h-[90px] border-2 border-[#E3EBD6] px-3 w-full' type="number" name="condicoesArmazenamentoSementePrioridade" value={data.condicoesArmazenamentoSementePrioridade || ''} onChange={handleInputChange} />
             </label>
           </div>
           <div className='col-span-2'>
@@ -170,7 +170,7 @@ export default function Etapa4({ onChange, data }) {
               <select
                 className='py-1 rounded-xl border-2 border-[#E3EBD6] px-3 w-full'
                 name="sistemaIntegracaoLPSim"
-                value={data.sistemaIntegracaoLP || ''}
+                value={data.sistemaIntegracaoLPOpcao || ''}
                 onChange={handleInputChange}
               >
                 <option value="">Selecione uma opção</option>

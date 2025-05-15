@@ -35,7 +35,7 @@ export default function Etapa5({ onChange, data }) {
           <div className='col-span-2'>
             <label className='font-openSans text-sm '>
               Estágio de desenvolvimento das plantas observadas:
-              <input className='py-1 rounded-xl border-2 border-[#E3EBD6] px-3 w-full' type="text" name="densidadeSementes" value={data.densidadeSementes || ''} onChange={handleInputChange} />
+              <input className='py-1 rounded-xl border-2 border-[#E3EBD6] px-3 w-full' type="text" name="estagioDesenvolvimentoPlantasObservadas" value={data.estagioDesenvolvimentoPlantasObservadas || ''} onChange={handleInputChange} />
             </label>
           </div>
           <div className='col-span-1'>

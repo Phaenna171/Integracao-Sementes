@@ -97,7 +97,7 @@ export default function Etapa3({ onChange, data }) {
             <div className='pt-4'>
               <label className='font-openSans text-sm '>
                 Descreva (Para todos os casos):
-                <textarea className='py-1 rounded-xl border-2 border-[#E3EBD6] px-3 w-full' type="text" name="condicoes" value={data.condicoes || ''} onChange={handleInputChange} />
+                <textarea className='py-1 rounded-xl border-2 border-[#E3EBD6] px-3 w-full' type="text" name="descricaoMotivo" value={data.descricaoMotivo || ''} onChange={handleInputChange} />
               </label>
             </div>
 
@@ -158,7 +158,7 @@ export default function Etapa3({ onChange, data }) {
           <div className='col-span-3'>
             <label className='font-openSans text-sm '>
               Problemas observados(Compactação do solo, Restos de galho, Palhada):
-              <input className='py-1 rounded-xl border-2 border-[#E3EBD6] px-3 w-full' type="text" name="caracteristicaDoSolo" value={data.caracteristicaDoSolo || ''} onChange={handleInputChange} />
+              <input className='py-1 rounded-xl border-2 border-[#E3EBD6] px-3 w-full' type="text" name="problemasObservados" value={data.problemasObservados || ''} onChange={handleInputChange} />
             </label>
           </div>
           <div className='col-span-1'>

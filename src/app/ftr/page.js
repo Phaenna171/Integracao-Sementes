@@ -25,14 +25,8 @@ export default function FormReclamacao() {
   const handleSubmit = async () => {
     try {
       const response = await mailService.register(formData)
+      alert('Formulário enviado com sucesso!');
 
-      if (!response.error) {
-        alert('Formulário enviado com sucesso!');
-        setFormData({}); // Limpar o formulário
-        setEtapa(1); // Voltar para a primeira etapa
-      } else {
-        alert('Erro ao enviar o formulário. Tente novamente.');
-      }
     } catch (error) {
       console.error('Erro ao enviar o formulário:', error);
       alert('Erro ao enviar o formulário. Tente novamente.');
