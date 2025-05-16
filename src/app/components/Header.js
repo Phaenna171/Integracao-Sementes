@@ -16,6 +16,7 @@ export default function Header({ footerRef }) {
     if (pathname === "/products") return "products";
     if (pathname === "/semeadeira") return "semeadeira";
     if (pathname === "/contact") return "contact";
+    if (pathname === "/ftr") return "ftr";
     return "";
   };
 
@@ -85,6 +86,13 @@ export default function Header({ footerRef }) {
               }}
             >
               Contato
+            </Link>
+            <Link
+              href="/ftr"
+              className={`text-lg leading-6 text-[#9B9B9B] font-openSans font-medium ${activeLink === "ftr" ? "border-b-4 border-[#A6BB3C] text-customGreen" : ""
+                }`}
+            >
+              FTR
             </Link>
           </PopoverGroup>
         </nav>
