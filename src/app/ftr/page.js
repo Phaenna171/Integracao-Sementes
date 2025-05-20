@@ -41,7 +41,7 @@ export default function FormReclamacao() {
       <GrupoWhatsApp />
       <Header footerRef={footerRef} />
       <div className=' py-16 px-4 xl:px-40'>
-        <h1 className=' font-effra text-2xl md:text-4xl text-[#2C674B] pb-8 text-center md:text-start'>Ficha Técnica de Reclamação - FTR</h1>
+        <h1 className=' font-effra text-2xl md:text-4xl text-[#2C674B] pb-8 text-center md:text-start'>FTR - Ficha Técnica de Reclamação</h1>
         {etapa === 1 && <Etapa1 onChange={handleChange} data={formData} />}
         {etapa === 2 && <Etapa2 onChange={handleChange} data={formData} />}
         {etapa === 3 && <Etapa3 onChange={handleChange} data={formData} />}
