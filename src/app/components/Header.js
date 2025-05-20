@@ -92,7 +92,7 @@ export default function Header({ footerRef }) {
               className={`text-lg leading-6 text-[#9B9B9B] font-openSans font-medium ${activeLink === "ftr" ? "border-b-4 border-[#A6BB3C] text-customGreen" : ""
                 }`}
             >
-              FTR
+              FTR - Ficha Técnica de Reclamação
             </Link>
           </PopoverGroup>
         </nav>
