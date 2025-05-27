@@ -39,7 +39,7 @@ export default function Header({ footerRef }) {
           aria-label="Global"
           className="w-full flex items-center justify-between"
         >
-          <div className="flex flex-1">
+          <div className={`flex flex-1 ${pathname !== "/ftr" && 'mt-4'}`}>
            {pathname !== "/ftr" && <Link href="/" className="p-2">
               <span className="sr-only">Integração Sementes</span>
               <img
