@@ -59,7 +59,7 @@ export default function Header({ footerRef }) {
               <Bars3Icon aria-hidden="true" className="h-8 w-8" />
             </button>
           </div>
-          <PopoverGroup className={`hidden lg:flex lg:gap-x-12 items-center ${pathname !== "/ftr" && 'mt-4'}`}>
+          <PopoverGroup className={`hidden lg:flex lg:gap-x-12 items-center ${pathname == "/ftr" && 'mt-4'}`}>
             <Link href="/" className={`text-lg leading-6 text-[#9B9B9B] font-openSans font-medium ${activeLink === "home" ? "border-b-4 border-[#A6BB3C] text-customGreen" : ""
               }`}>
               Home
