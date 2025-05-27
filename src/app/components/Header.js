@@ -39,7 +39,7 @@ export default function Header({ footerRef }) {
           aria-label="Global"
           className="w-full flex items-center justify-between"
         >
-          <div className={`flex flex-1 ${pathname !== "/ftr" && 'mt-4'}`}>
+          <div className={`flex flex-1`}>
            {pathname !== "/ftr" && <Link href="/" className="p-2">
               <span className="sr-only">Integração Sementes</span>
               <img
@@ -59,7 +59,7 @@ export default function Header({ footerRef }) {
               <Bars3Icon aria-hidden="true" className="h-8 w-8" />
             </button>
           </div>
-          <PopoverGroup className="hidden lg:flex lg:gap-x-12 items-center">
+          <PopoverGroup className={`hidden lg:flex lg:gap-x-12 items-center ${pathname !== "/ftr" && 'mt-4'}`}>
             <Link href="/" className={`text-lg leading-6 text-[#9B9B9B] font-openSans font-medium ${activeLink === "home" ? "border-b-4 border-[#A6BB3C] text-customGreen" : ""
               }`}>
               Home
